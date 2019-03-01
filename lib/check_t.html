@@ -1,0 +1,548 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width">
+<title>電書ラボチェッカー</title>
+<script type="text/javascript">
+window.onload = function() {
+	var p = document.getElementsByClassName("help");
+	for(i=0;i<p.length;i++) {
+		p[i].onclick = function(ev) {
+			var next = this ;
+			while( next = next.nextSibling) {
+				if((next.tagName && next.tagName.toUpperCase())=="DIV") break ;
+			}
+			if(next.style.display!="block") next.style.display ="block" ;
+			else next.style.display = "none" ;
+		} ;
+	}
+	var p = document.getElementsByClassName("open");
+	for(i=0;i<p.length;i++) {
+		p[i].onclick = function(ev) {
+			var next = this ;
+			while( next = next.nextSibling) {
+				if((next.tagName && next.tagName.toUpperCase())=="DIV") break ;
+			}
+			if(next.style.display!="block") next.style.display ="block" ;
+			else next.style.display = "none" ;
+		} ;
+	}
+}
+</script>
+<style type="text/css">
+div.base {
+	margin:2em ;
+	width:60em ;
+	font-family:sans-serif;
+}
+table {
+	border:1px solid #444 ;
+	border-collapse: collapse ;
+}
+td,th {
+	border:1px solid #444 ;
+	padding:0.5em ;
+}
+th {
+	background-color:#eee ;
+}
+textarea.epubcheck {
+	font-size:1em ;
+	width:50em ;
+	height:10em ;
+}
+div.title {
+	width:100% ;
+	background-color:#444 ;
+	color:#eee ;
+	font-size:2em ;
+	padding:0.3em;
+}
+h1 {
+	font-size:2em ;
+	border-bottom:2px solid #44f ;
+}
+
+div.hantei {
+	font-size:1.3em ;
+	margin:0.5em ;
+}
+span.k {
+	font-size:2em ;
+	border:1px dotted #444 ;
+}
+.ok:before {
+	content:"◯ " ;
+	font-weight: bold ;
+	color: #2F2 ;
+}
+.ng:before {
+	content:"× " ;
+	font-weight: bold ;
+	color: #F22 ;	
+}
+.wn:before {
+	content:"△ " ;
+	font-weight: bold ;
+	color: #cc2 ;	
+}
+span.help,span.open {
+	margin-left:2em ;
+	padding: 0.1em 0.5em ;
+	background-color:green;
+	color:white ;
+	cursor:pointer ;
+}
+div.guide {
+	display:none ;
+	border:1px dotted black ;
+	padding:0.3em ;
+}
+div.gaiji {
+	float:left ;
+	margin:0.5em ;
+	border:1px solid #888 ;
+}
+div.gaiji img {
+	background-color:#ff4 ;
+}
+span.s {
+	background-color: #fcc ;
+}
+span.cap {
+	color: #88f ;
+}
+span.nohit {
+	font-weight: bold ;
+}
+div.footer {
+	margin-top:5em ;
+}
+span.k.cc_a {
+	background-color:#eef ;
+}
+span.k.cc_j {
+	background-color:#fee ;
+}
+div.glist,div.clist {
+	display:none ;
+}
+</style>
+</head>
+<body>
+<div class=base>
+<div class=title>電書ラボチェッカー</div>
+Version: {rval version}<br/>
+
+<h2>ファイル名: {rval fname}</h2>
+チェック日時: {rval datetime}
+
+<h1>EPUBバリデータ</h1>
+<!--{def c/epubcheck/ok}-->
+<div class=hantei><span class=ok>EPUBバリデータ(epubcheck)の結果は問題ありません。</span></div>
+<!--{/def}-->
+<!--{def c/epubcheck/ng}-->
+<div class=hantei><span class=ng>EPUBバリデータ(epubcheck)の結果にエラーがあります。まずこちらをチェックしてください。</span><br/>
+epubcheckのエラーメッセージの日本語訳は<a href="http://lostandfound.github.io/epubcheckmsg-ja/" target="_blank">こちら</a>を参照してください。
+</div>
+<!--{/def}-->
+<textarea class=epubcheck readonly>{rval c/epubcheck/result}</textarea>
+<br/><span class=help>解説</span>
+<div class=guide>IDPF の提供している公式の epub 書式チェッカーである「epubcheck」でのチェック結果。EPUB フォルダ内のファイル 名と OPF に記述されているファイル名の整合性が取れているかどうか、ファイル内のリンク指定がきちんとなされている か、ID 名の重複がないかなど、様々な項目をチェックする。このチェックをクリアしていない EPUB は、商業コンテンツ として流通を許されない。「No errors or warnings ditected.」と表示されていれば OK(warning は error よりも程度の軽い
+「警告」程度の意味だが、いずれにせよ出ていたら NG)。<br/>
+ただし、文字など日本語に依存する問題や、画像のサイズなど各ストアの規定に依存する部分は epubcheck ではチェック できないので注意のこと。</div>
+ 
+<h1>メタ情報チェック</h1>
+<!--{def c/opfcheck/ok}-->
+<div class=hantei><span class=ok>メタ情報チェック結果は問題ありません。</span></div>
+<!--{/def}-->
+<!--{def c/opfcheck/wn}-->
+<div class=hantei><span class=wn>メタ情報チェック結果に注意すべき項目があります。確認してください。</span></div>
+<!--{/def}-->
+<!--{def c/opfcheck/ng}-->
+<div class=hantei><span class=ng>メタ情報チェックの結果に問題があります。確認してください。</span></div>
+<!--{/def}-->
+
+<table class=h>
+<tr><th>書名情報</th>
+<td ><span class="{val c/opfcheck/c/title/stat}">{rval c/opfcheck/c/title/msg}</span></td>
+</tr>
+<tr><th>著者情報</th>
+<td><span class="{val c/opfcheck/c/creator/stat}"></span>{rval c/opfcheck/c/creator/msg}</td>
+</tr>
+<tr><th>出版社情報</th>
+<td><span class="{val c/opfcheck/c/publisher/stat}"></span>{rval c/opfcheck/c/publisher/msg}</td>
+</tr>
+<tr><th>表紙情報</th>
+<td><span class="{val c/opfcheck/c/cover/stat}"></span>{rval c/opfcheck/c/cover/msg} 
+<!--{def c/opfcheck/c/cover/img}-->
+<a href="img/{val c/opfcheck/c/cover/imgname}" target="_blank">画像</a>
+<!--{/def}-->
+</td>
+</tr>
+<tr><th>電書協バージョン</th>
+<td><span class="{val c/opfcheck/c/dver/stat}"></span>{rval c/opfcheck/c/dver/msg}
+<span class=help>解説</span>
+<div class=guide>電書協、電書ラボ仕様準拠の場合、このタグが必要です。</div>
+</td>
+</tr>
+<tr><th>EPUB ID</th>
+<td><span class="{val c/opfcheck/c/id/stat}"></span>{rval c/opfcheck/c/id/msg}
+<span class=help>解説</span>
+<div class=guide>EPUB IDは、このファイルにつけるユニークなID。「電書ラボEPUB制作仕様」ではJPeコード（8 桁の数字+ 12 桁の英数字で構成される）を推奨する。</div>
+</td>
+</tr>
+
+</table>
+
+<h1>メタ情報詳細</h1>
+<table>
+<tr><td></td>
+<th>EPUB内メタ情報</th>
+<th>NDL書誌情報</th>
+</tr>
+
+<tr><th>書名</th><td>
+<!--{each e/meta/dc-title}-->
+{val e/meta/dc-title/_content}<br/>
+<!--{/each}-->
+<!--{def e/meta/dc-title/refines/file-as}-->
+<br/>{val e/meta/dc-title/refines/file-as/_content} 
+<!--{/def}--> 
+</td>
+<!--{def ndl}-->
+<td>{val ndl/dc-title/rdf-description/rdf-value/_content}<br/>
+{val ndl/dc-title/rdf-description/dcndl-transcription/_content}<br/></td>
+<!--{/def}-->
+</tr>
+
+
+<tr><th>著者</th><td>
+<!--{each e/meta/dc-creator}-->
+{val e/meta/dc-creator/_content}<br/>
+<!--{/each}-->
+<!--{def e/meta/dc-creator/refines/file-as}-->
+<br/>{val e/meta/dc-creator/refines/file-as/_content}  
+<!--{/def}--> 
+<!--{def e/meta/dc-creator/refines/role}-->
+<br/><span class=cap>Role: </span>{val e/meta/dc-creator/refines/role/_content}  
+<!--{/def}--> 
+</td>
+<!--{def ndl}-->
+<!--{def ndl/dc-creator/_content}-->
+<td>{val ndl/dc-creator/_content}<br/>
+<!--{/def}-->
+<!--{undef ndl/dc-creator/_content}-->
+<td>
+<!--{each ndl/dc-creator}-->
+{val ndl/dc-creator/_content}<br/>
+<!--{/each}-->
+<!--{/undef}-->
+</td>
+<!--{/def}-->
+</tr>
+
+<tr><th>出版社</th><td>{val e/meta/dc-publisher/_content}
+<!--{def e/meta/dc-publisher/refines/file-as}-->
+<br/>{val e/meta/dc-publisher/refines/file-as/_content}  
+<!--{/def}--> 
+</td>
+<!--{def ndl}-->
+<td>{val ndl/dcterms-publisher/foaf-agent/foaf-name/_content}<br/>
+{val ndl/dcterms-publisher/foaf-agent/foaf-transcription/_content}<br/></td>
+<!--{/def}-->
+</tr>
+<!--{each e/meta/dc-identifier}-->
+<tr><th>EPUB ID</th><td>{val e/meta/dc-identifier/_content} <br/>
+<span class=cap>ID種別: </span>{val e/meta/dc-identifier/id} {val e/meta/dc-identifier/opf:scheme}</td>
+<!--{def ndl}-->
+<td>底本ISBN: {val isbn}</td>
+<!--{/def}-->
+</tr>
+<!--{def e/meta/dc-rights}-->
+<tr><th>著作権情報</th><td>{rval e/meta/dc-rights/_content}</td></tr>
+<!--{/def}-->
+<!--{def e/meta/dc-date}-->
+<tr><th>日付</th><td>{rval e/meta/dc-date/_content}</td></tr>
+<!--{/def}-->
+<!--{def e/meta/dc-description}-->
+<tr><th>説明</th><td>{rval e/meta/dc-description/_content}</td></tr>
+<!--{/def}-->
+<!--{def e/meta/dc-contributor}-->
+<tr><th>contributor</th><td>{rval e/meta/dc-contributor/_content} ({rval e/meta/dc-contributor/opf:role})</td></tr>
+<!--{/def}-->
+<!--{/each}-->
+
+<tr><th>EPUB Version</th><td>{val e/version}</td>
+</tr>
+
+<tr><th>綴じ方向</th><td>{val e/page-dir}
+<span class=help>解説</span>
+<div class=guide>綴じ方向は、綴じ方向の種別でrtl（right to left）は右から左の右綴じで縦書、ltr（ left to right）は左から右の左綴じで横書き。
+綴じ方向は EPUB パッケージ全体で統一する必要があり、現在は混在をさけるのがよい。底本で逆丁索引などを採用していた場合には注意。</div>
+</td></tr>
+<tr><th>言語</th><td>{val e/meta/dc-language/_content}
+<span class=help>解説</span>
+<div class=guide>言語は、コンテンツ内でメインで使用されている言語。日本語の場合は「ja」</div>
+</td></tr>
+<!--{def e/meta/meta/dcterms:modified}-->
+<tr><th>更新日時</th><td>{rval e/meta/meta/dcterms:modified/_content}
+<span class=help>解説</span>
+<div class=guide>更新日時は、ほぼ制作完了日にしておくのが良い。記法は厳密に守る必要がある。</div>
+</td></tr>
+<!--{/def}-->
+</table>
+
+
+<!--{def e/fixed}-->
+<h1>固定EPUBチェック</h1>
+<!--{def c/fixcheck/ok}-->
+<div class=hantei><span class=ok>固定EPUBチェック結果は問題ありません。</span></div>
+<!--{/def}-->
+<!--{def c/fixcheck/wn}-->
+<div class=hantei><span class=wn>固定EPUBチェック結果に注意すべき項目があります。確認してください。</span></div>
+<!--{/def}-->
+<!--{def c/fixcheck/ng}-->
+<div class=hantei><span class=ng>固定EPUBチェックの結果に問題があります。確認してください。</span></div>
+<!--{/def}-->
+
+<h2>Viewportチェック</h2>
+<span class="{val c/fixcheck/novp/stat}"></span>{rval c/fixcheck/novp/msg}
+<span class=help>解説</span>
+<div class=guide>各ページにviewportが設定されているかをチェック。</div>
+
+<h2>imgタグチェック</h2>
+<span class="{val c/fixcheck/noimg/stat}"></span>{rval c/fixcheck/noimg/msg}
+<span class=help>解説</span>
+<div class=guide>各ページにimgタグが含まれているかをチェック。</div>
+
+<h2>画像サイズチェック</h2>
+<span class="{val c/fixcheck/imgsize/stat}"></span>{rval c/fixcheck/imgsize/msg}<br/>
+<span class=help>解説</span>
+<div class=guide>画像サイズに不一致があったものを表示。RSによってはサイズが揃っていないと不具合になる場合があるので注意。</div>
+
+<h2>画像一覧</h2>
+<table>
+<tr>
+<th>画像ファイル</th><th>画像サイズ</th><th>viewportサイズ</th>
+</tr>
+<!--{each c/fixcheck/pages}-->
+<tr>
+<td>{rval c/fixcheck/pages/n}</td>
+<td>{rval c/fixcheck/pages/w} x {rval c/fixcheck/pages/h}</td>
+<td>{rval c/fixcheck/pages/vw} x {rval c/fixcheck/pages/vh}</td>
+</tr>
+<!--{/each}-->
+</table>
+<!--{/def}-->
+
+<h1>文字コードチェック</h1>
+<!--{undef c/chc}-->
+<div class=hantei><span class=ok>問題ある文字はありません。</span></div>
+<!--{/def}-->
+<!--{def c/chc/wn}-->
+<div class=hantei><span class=wn>注意すべき文字があります。確認してください。</span></div>
+<!--{/def}-->
+<!--{def c/chc/ng}-->
+<div class=hantei><span class=ng>使用を推奨しない文字があります。確認してください。</span></div>
+<!--{/def}-->
+<table class=h>
+
+<!--{def c/chc/bom}-->
+<tr>
+<th>BOM</th>
+<td>
+<!--{each c/chc/bom}-->
+{rval c/chc/bom}<br/>
+<!--{/each}-->
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内ファイルの先頭に BOM(Byte Order Mark)が含まれていた場合に表示される。BOM は UTF-16 などで エンコーディングされたテキストでエンコーディング方式の詳細を記述するために用いられるが、EPUB で主に使われる UTF-8 では必要ない。トラブルのもとになるため削除すること。</div>
+</td>
+</tr>
+<!--{/def}-->
+
+<!--{def c/chc/kanji}-->
+<tr>
+<th>JIS範囲外漢字</th>
+<td>
+<!--{each c/chc/kanji}-->
+<span class="k {rval c/chc/kanji/c}">&#x{rval c/chc/kanji/u};</span>(U+{rval c/chc/kanji/u})
+<!--{/each}-->
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に JIS X 0213 で規定されていない漢字が含まれていた場合に表示される。 JIS X 0213 に規定されていない漢字の中には、一部の日本語フォントにグリフが収録されていないため、使用できないものが存在する。<br/>背景が青地になっている漢字は、Adobe-Japan1-6に含まれるもので、多くの日本語フォントではサポートされる。背景が白のものは、日本語フォントに収録されていない可能性が高いので注意が必要。</div>
+
+</td>
+</tr>
+<!--{/def}-->
+
+<!--{def c/chc/kigo}-->
+<tr>
+<th>JIS範囲外非漢字</th>
+<td>
+<!--{each c/chc/kigo}-->
+<span class="k {rval c/chc/kigo/c}">&#x{rval c/chc/kigo/u};</span>(U+{rval c/chc/kigo/u})
+<!--{/each}-->
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に JIS X 0213 で規定されていない記号類が含まれていた場合に表示される。 JIS X 0213 に規定されていない記号類の中には、一部の日本語フォントにグリフが収録されていないため、使用できないものが存在する。<br/>背景が青地になっている文字は、Adobe-Japan1-6に含まれるもので、多くの日本語フォントではサポートされる。背景が白のものは、日本語フォントに収録されていない可能性が高いので注意が必要。</div>
+
+</td>
+</tr>
+<!--{/def}-->
+
+<!--{def c/chc/usp}-->
+<tr>
+<th>特殊スペース</th>
+<td>
+<!--{each c/chc/usp}-->
+U+{rval c/chc/usp} 
+<!--{/each}-->
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に U+2000 〜 U+200B の特殊幅スペースが含まれていた場合に表示される。これらの特殊幅スペース文字 は JISX0213 外の文字であり、多くの日本語フォントにグリフ(字形)割り当てのない文字も多数含まれるため、使用する ことはできない。</div>
+</td>
+</tr>
+<!--{/def}-->
+
+<!--{def c/chc/sgp}-->
+<tr>
+<th>サロゲートペア文字</th>
+<td>
+<!--{each c/chc/sgp}-->
+<span class="k {rval c/chc/sgp/c}">&#x{rval c/chc/sgp/u};</span>(U+{rval c/chc/sgp/u})
+<!--{/each}-->
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に U+20000 〜 U+2FFFF の CJK 統合漢字拡張 B 及び CJK 互換漢字補助に分類される文字が含まれていた場 合に表示される。この領域の文字は一部の RS でまだ表示をサポートしていないため、使用することができない。使用頻度 のかなり低い文字が大半だが、例外的に使用頻度が高い文字が「𠮟」(U+20B9F)と「𠮷」(U+20BB7)。注意のこと。<br/>背景が赤の漢字は、JIS範囲内。</div>
+</td>
+</tr>
+<!--{/def}-->
+
+<!--{def c/chc/cc}-->
+<tr>
+<th>コントロールコード</th>
+<td>
+<!--{each c/chc/cc}-->
+U+{rval c/chc/cc}<br/>
+<!--{/each}-->
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に CR,LF,TAB,nbsp 以外のコントロールコードが含まれていた場合に表示される(コントロールコードの範 囲は U+0000 〜 U+001F、U+007F)。これらの文字は大型コンピュータ時代に使われていた機械制御用コード文字であり、 コンテンツとしては意味を持たない。削除すること。</div>
+</td>
+</tr>
+<!--{/def}-->
+
+<!--{def c/chc/ivs}-->
+<tr>
+<th>IVS</th>
+<td>
+<!--{each c/chc/ivs}-->
+U+{rval c/chc/ivs}<br/>
+<!--{/each}-->
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に Unicode IVS の漢字異体字字形表示文字が含まれていた場合に表示される。Unicode IVS は一部の RS で サポートされておらず、正しく文字が表示されないため、まだ使用することはできない。</div>
+</td>
+</tr>
+<!--{/def}-->
+
+</table>
+<!--{def c/gaiji}-->
+<h2>画像外字一覧</h2>
+<!--{each c/gaiji}-->
+<div class=gaiji>
+<div class=gm><img src="img/{rval c/gaiji/name}" /></div>
+{rval c/gaiji/name}<br/>
+{rval c/gaiji/width} x {rval c/gaiji/height}<br/>
+Format:{rval c/gaiji/color} Bit:{rval c/gaiji/bit}
+</div>
+<!--{/each}-->
+<br clear=all><span class=help>解説</span>
+<div class=guide>画像外字として使われている画像(class名が"gaiji"であるもの)を一覧する。<br/>
+背景が黄色になっていないものは透過PNGになっていないので修正が必要。<br/>
+Unicodeのコードにある文字で外字になっているものは、置き換えを考慮すべし。<br/>
+Formatの項目は、画像の形式を示す。G=グレイスケール、I=インデックスカラー、F=フルカラーをしめし、Tが付くものは透過色指定あり、Aはαチャネル有りを表す。
+</div>
+<!--{/def}-->
+
+
+<br clear=all>
+
+<h1>本文チェック</h1>
+
+<!--{each c/grep}-->
+<h2>{rval c/grep/title}</h2>
+{val c/grep/stext}
+<span class=help>解説</span><div class=guide>{val c/grep/etext}</div>
+<br/>
+<!--{def c/grep/e}-->
+全{rval c/grep/count}件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<!--{each c/grep/e}-->
+<tr>
+<th class=f colspan=2>{rval c/grep/e/f}</th>
+</tr>
+<!--{each c/grep/e/m}-->
+<tr>
+<th>{rval c/grep/e/m/p}</th>
+<td class=s>
+
+{rval c/grep/e/m/l} <br/> 
+
+</td>
+</tr>
+<!--{/each}-->
+
+<!--{/each}-->
+
+</table>
+</div>
+<!--{/def}-->
+<!--{undef c/grep/e}-->
+<span class=nohit>該当部分はありません</span>
+<!--{/undef}-->
+<!--{/each}-->
+
+
+<h1>電書協CSSチェック</h1>
+<span class=help>解説</span>
+<div class=guide>電書協準拠EPUBで使われている各種組版スタイルの利用箇所を抽出する。</div>
+<!--{each c/class}-->
+<h2>{rval c/class/title}</h2>
+{rval c/class/stext}<br/>
+<!--
+<span class=help>解説</span><div class=guide>{rval c/class/etext}</div>
+-->
+
+<!--{def c/class/e}-->
+全{rval c/class/count}件 <span class="open">表示する</span>
+<div class="clist">
+<table>
+<!--{each c/class/e}-->
+<tr>
+<th class=f colspan=2>{rval c/class/e/f}</th>
+</tr>
+<!--{each c/class/e/m}-->
+<tr>
+<th>{rval c/class/e/m/p}</th>
+<td class=s>
+
+{rval c/class/e/m/l} <br/> 
+
+</td>
+</tr>
+<!--{/each}-->
+
+<!--{/each}-->
+
+</table>
+</div>
+<!--{/def}-->
+<!--{undef c/class/e}-->
+<span class=nohit>該当部分はありません</span>
+<!--{/undef}-->
+<!--{/each}-->
+
+
+<div class=footer>
+<hr>
+Generated by <a href="http://ck.densholab.jp/ec/">電書ラボチェッカー</a>
+</div>
+</body>

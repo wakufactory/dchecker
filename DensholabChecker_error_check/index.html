@@ -1,0 +1,5553 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width">
+<title>電書ラボチェッカー</title>
+<script type="text/javascript">
+window.onload = function() {
+	var p = document.getElementsByClassName("help");
+	for(i=0;i<p.length;i++) {
+		p[i].onclick = function(ev) {
+			var next = this ;
+			while( next = next.nextSibling) {
+				if((next.tagName && next.tagName.toUpperCase())=="DIV") break ;
+			}
+			if(next.style.display!="block") next.style.display ="block" ;
+			else next.style.display = "none" ;
+		} ;
+	}
+	var p = document.getElementsByClassName("open");
+	for(i=0;i<p.length;i++) {
+		p[i].onclick = function(ev) {
+			var next = this ;
+			while( next = next.nextSibling) {
+				if((next.tagName && next.tagName.toUpperCase())=="DIV") break ;
+			}
+			if(next.style.display!="block") next.style.display ="block" ;
+			else next.style.display = "none" ;
+		} ;
+	}
+}
+</script>
+<style type="text/css">
+div.base {
+	margin:2em ;
+	width:60em ;
+	font-family:sans-serif;
+}
+table {
+	border:1px solid #444 ;
+	border-collapse: collapse ;
+}
+td,th {
+	border:1px solid #444 ;
+	padding:0.5em ;
+}
+th {
+	background-color:#eee ;
+}
+textarea.epubcheck {
+	font-size:1em ;
+	width:50em ;
+	height:10em ;
+}
+div.title {
+	width:100% ;
+	background-color:#444 ;
+	color:#eee ;
+	font-size:2em ;
+	padding:0.3em;
+}
+h1 {
+	font-size:2em ;
+	border-bottom:2px solid #44f ;
+}
+
+div.hantei {
+	font-size:1.3em ;
+	margin:0.5em ;
+}
+span.k {
+	font-size:2em ;
+	border:1px dotted #444 ;
+}
+.ok:before {
+	content:"◯ " ;
+	font-weight: bold ;
+	color: #2F2 ;
+}
+.ng:before {
+	content:"× " ;
+	font-weight: bold ;
+	color: #F22 ;	
+}
+.wn:before {
+	content:"△ " ;
+	font-weight: bold ;
+	color: #cc2 ;	
+}
+span.help,span.open {
+	margin-left:2em ;
+	padding: 0.1em 0.5em ;
+	background-color:green;
+	color:white ;
+	cursor:pointer ;
+}
+div.guide {
+	display:none ;
+	border:1px dotted black ;
+	padding:0.3em ;
+}
+div.gaiji {
+	float:left ;
+	margin:0.5em ;
+	border:1px solid #888 ;
+}
+div.gaiji img {
+	background-color:#ff4 ;
+}
+span.s {
+	background-color: #fcc ;
+}
+span.cap {
+	color: #88f ;
+}
+span.nohit {
+	font-weight: bold ;
+}
+div.footer {
+	margin-top:5em ;
+}
+span.k.cc_a {
+	background-color:#eef ;
+}
+span.k.cc_j {
+	background-color:#fee ;
+}
+div.glist,div.clist {
+	display:none ;
+}
+</style>
+</head>
+<body>
+<div class=base>
+<div class=title>電書ラボチェッカー</div>
+Version: 1.1.1<br/>
+
+<h2>ファイル名: DensholabChecker_error.epub</h2>
+チェック日時: 2014-09-26 18:36:48
+<h1>EPUBバリデータ</h1>
+<div class=hantei><span class=ng>EPUBバリデータ(epubcheck)の結果にエラーがあります。まずこちらをチェックしてください。</span><br/>
+epubcheckのエラーメッセージの日本語訳は<a href="http://lostandfound.github.io/epubcheckmsg-ja/" target="_blank">こちら</a>を参照してください。
+</div>
+<textarea class=epubcheck readonly>Epubcheck Version 3.0.1
+
+Validating against EPUB version 3.0
+ERROR: package.epub/item/standard.opf(12,41): character content of element "dc:creator" invalid; must be a string with length at least 1 (actual length was 0)
+
+Check finished with warnings or errors
+</textarea>
+<br/><span class=help>解説</span>
+<div class=guide>IDPF の提供している公式の epub 書式チェッカーである「epubcheck」でのチェック結果。EPUB フォルダ内のファイル 名と OPF に記述されているファイル名の整合性が取れているかどうか、ファイル内のリンク指定がきちんとなされている か、ID 名の重複がないかなど、様々な項目をチェックする。このチェックをクリアしていない EPUB は、商業コンテンツ として流通を許されない。「No errors or warnings ditected.」と表示されていれば OK(warning は error よりも程度の軽い
+「警告」程度の意味だが、いずれにせよ出ていたら NG)。<br/>
+ただし、文字など日本語に依存する問題や、画像のサイズなど各ストアの規定に依存する部分は epubcheck ではチェック できないので注意のこと。</div>
+ 
+<h1>メタ情報チェック</h1>
+<div class=hantei><span class=ng>メタ情報チェックの結果に問題があります。確認してください。</span></div>
+
+<table class=h>
+<tr><th>書名情報</th>
+<td ><span class="ok">電書ラボチェッカーテストサンプル</span></td>
+</tr>
+<tr><th>著者情報</th>
+<td><span class="ng"></span>著者タグの内容が空白です</td>
+</tr>
+<tr><th>出版社情報</th>
+<td><span class="ok"></span>三陽社メディア開発室／電書ラボ</td>
+</tr>
+<tr><th>表紙情報</th>
+<td><span class="ok"></span>カバー画像あり 
+<a href="img/cover.jpg" target="_blank">画像</a>
+</td>
+</tr>
+<tr><th>電書協バージョン</th>
+<td><span class="ok"></span>1.1.2<span class=help>解説</span>
+<div class=guide>電書協、電書ラボ仕様準拠の場合、このタグが必要です。</div>
+</td>
+</tr>
+<tr><th>EPUB ID</th>
+<td><span class="ok"></span>ID種別: unique-id<br/> ID:urn:uuid:FDBC2AF8-C7D8-4938-A0DF-FB208C267CBD<span class=help>解説</span>
+<div class=guide>EPUB IDは、このファイルにつけるユニークなID。「電書ラボEPUB制作仕様」ではJPeコード（8 桁の数字+ 12 桁の英数字で構成される）を推奨する。</div>
+</td>
+</tr>
+
+</table>
+
+<h1>メタ情報詳細</h1>
+<table>
+<tr><td></td>
+<th>EPUB内メタ情報</th>
+<th>NDL書誌情報</th>
+</tr>
+
+<tr><th>書名</th><td>
+電書ラボチェッカーテストサンプル<br/>
+ 
+</td>
+<td>電子書籍制作・流通の基礎テキスト : 出版社・制作会社スタッフが知っておきたいこと<br/>
+デンシ ショセキ セイサク リュウツウ ノ キソ テキスト : シュッパンシャ セイサク ガイシャ スタッフ ガ シッテ オキタイ コト<br/></td>
+</tr>
+
+
+<tr><th>著者</th><td>
+<br/>
+ 
+ 
+</td>
+<td>
+植村八潮 編著<br/>
+電子出版制作・流通協議会 著<br/>
+</td>
+</tr>
+
+<tr><th>出版社</th><td>三陽社メディア開発室／電書ラボ<br/>サンヨウシャメディアカイハツシツ／デンショラボ  
+ 
+</td>
+<td>ポット出版<br/>
+<br/></td>
+</tr>
+<tr><th>EPUB ID</th><td>urn:uuid:FDBC2AF8-C7D8-4938-A0DF-FB208C267CBD <br/>
+<span class=cap>ID種別: </span>unique-id </td>
+<td>底本ISBN: 978-4-7808-0206-1</td>
+</tr>
+
+<tr><th>EPUB Version</th><td>3.0</td>
+</tr>
+
+<tr><th>綴じ方向</th><td>rtl<span class=help>解説</span>
+<div class=guide>綴じ方向は、綴じ方向の種別でrtl（right to left）は右から左の右綴じで縦書、ltr（ left to right）は左から右の左綴じで横書き。
+綴じ方向は EPUB パッケージ全体で統一する必要があり、現在は混在をさけるのがよい。底本で逆丁索引などを採用していた場合には注意。</div>
+</td></tr>
+<tr><th>言語</th><td>ja<span class=help>解説</span>
+<div class=guide>言語は、コンテンツ内でメインで使用されている言語。日本語の場合は「ja」</div>
+</td></tr>
+<tr><th>更新日時</th><td>2014-08-28T11:27:35Z<span class=help>解説</span>
+<div class=guide>更新日時は、ほぼ制作完了日にしておくのが良い。記法は厳密に守る必要がある。</div>
+</td></tr>
+</table>
+
+
+
+<h1>文字コードチェック</h1>
+<div class=hantei><span class=ng>使用を推奨しない文字があります。確認してください。</span></div>
+<table class=h>
+
+
+<tr>
+<th>JIS範囲外漢字</th>
+<td>
+<span class="k cc_a">&#x4E04;</span>(U+4E04)
+<span class="k cc_a">&#x4E5C;</span>(U+4E5C)
+<span class="k j">&#x4E13;</span>(U+4E13)
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に JIS X 0213 で規定されていない漢字が含まれていた場合に表示される。 JIS X 0213 に規定されていない漢字の中には、一部の日本語フォントにグリフが収録されていないため、使用できないものが存在する。<br/>背景が青地になっている漢字は、Adobe-Japan1-6に含まれるもので、多くの日本語フォントではサポートされる。背景が白のものは、日本語フォントに収録されていない可能性が高いので注意が必要。</div>
+
+</td>
+</tr>
+
+<tr>
+<th>JIS範囲外非漢字</th>
+<td>
+<span class="k j">&#x200C;</span>(U+200C)
+<span class="k j">&#x200D;</span>(U+200D)
+<span class="k j">&#x205F;</span>(U+205F)
+<span class="k cc_a">&#xFE31;</span>(U+FE31)
+<span class="k cc_a">&#xFE33;</span>(U+FE33)
+<span class="k cc_a">&#x309A;</span>(U+309A)
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に JIS X 0213 で規定されていない記号類が含まれていた場合に表示される。 JIS X 0213 に規定されていない記号類の中には、一部の日本語フォントにグリフが収録されていないため、使用できないものが存在する。<br/>背景が青地になっている文字は、Adobe-Japan1-6に含まれるもので、多くの日本語フォントではサポートされる。背景が白のものは、日本語フォントに収録されていない可能性が高いので注意が必要。</div>
+
+</td>
+</tr>
+
+<tr>
+<th>特殊スペース</th>
+<td>
+U+2000 
+U+2001 
+U+2002 
+U+2003 
+U+2004 
+U+2005 
+U+2006 
+U+2007 
+U+2008 
+U+2009 
+U+200A 
+U+200B 
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に U+2000 〜 U+200B の特殊幅スペースが含まれていた場合に表示される。これらの特殊幅スペース文字 は JISX0213 外の文字であり、多くの日本語フォントにグリフ(字形)割り当てのない文字も多数含まれるため、使用する ことはできない。</div>
+</td>
+</tr>
+
+<tr>
+<th>サロゲートペア文字</th>
+<td>
+<span class="k cc_j">&#x20B9F;</span>(U+20B9F)
+<span class="k cc_a">&#x20BB7;</span>(U+20BB7)
+<span class="k cc_j">&#x2000B;</span>(U+2000B)
+<span class="k cc_j">&#x20213;</span>(U+20213)
+<span class="k cc_a">&#x20611;</span>(U+20611)
+<span class="k cc_j">&#x2074F;</span>(U+2074F)
+<span class="k cc_j">&#x20807;</span>(U+20807)
+<span class="k cc_j">&#x20DE1;</span>(U+20DE1)
+<span class="k cc_j">&#x20E6D;</span>(U+20E6D)
+<span class="k cc_j">&#x2131B;</span>(U+2131B)
+<span class="k cc_j">&#x23451;</span>(U+23451)
+<span class="k cc_j">&#x235C4;</span>(U+235C4)
+<span class="k cc_j">&#x24103;</span>(U+24103)
+<span class="k cc_a">&#x242EE;</span>(U+242EE)
+<span class="k cc_j">&#x25122;</span>(U+25122)
+<span class="k cc_j">&#x2550E;</span>(U+2550E)
+<span class="k cc_j">&#x26286;</span>(U+26286)
+<span class="k cc_j">&#x273FE;</span>(U+273FE)
+<span class="k cc_j">&#x285C9;</span>(U+285C9)
+<span class="k cc_j">&#x292B1;</span>(U+292B1)
+<span class="k j">&#x20000;</span>(U+20000)
+<span class="k cc_a">&#x1F110;</span>(U+1F110)
+<span class="k cc_a">&#x1F130;</span>(U+1F130)
+<span class="k cc_a">&#x1F150;</span>(U+1F150)
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に U+20000 〜 U+2FFFF の CJK 統合漢字拡張 B 及び CJK 互換漢字補助に分類される文字が含まれていた場 合に表示される。この領域の文字は一部の RS でまだ表示をサポートしていないため、使用することができない。使用頻度 のかなり低い文字が大半だが、例外的に使用頻度が高い文字が「𠮟」(U+20B9F)と「𠮷」(U+20BB7)。注意のこと。<br/>背景が赤の漢字は、JIS範囲内。</div>
+</td>
+</tr>
+
+
+<tr>
+<th>IVS</th>
+<td>
+U+E0100<br/>
+U+E0101<br/>
+<br><span class=help>解説</span>
+<div class=guide>コンテンツ内に Unicode IVS の漢字異体字字形表示文字が含まれていた場合に表示される。Unicode IVS は一部の RS で サポートされておらず、正しく文字が表示されないため、まだ使用することはできない。</div>
+</td>
+</tr>
+
+</table>
+<h2>画像外字一覧</h2>
+<div class=gaiji>
+<div class=gm><img src="img/gaiji-001.png" /></div>
+gaiji-001.png<br/>
+128 x 128<br/>
+Format:IT Bit:8</div>
+<div class=gaiji>
+<div class=gm><img src="img/gaiji-002.png" /></div>
+gaiji-002.png<br/>
+128 x 256<br/>
+Format:IT Bit:8</div>
+<div class=gaiji>
+<div class=gm><img src="img/gaiji-003.png" /></div>
+gaiji-003.png<br/>
+333 x 128<br/>
+Format:FA Bit:8</div>
+<br clear=all><span class=help>解説</span>
+<div class=guide>画像外字として使われている画像(class名が"gaiji"であるもの)を一覧する。<br/>
+背景が黄色になっていないものは透過PNGになっていないので修正が必要。<br/>
+Unicodeのコードにある文字で外字になっているものは、置き換えを考慮すべし。<br/>
+Formatの項目は、画像の形式を示す。G=グレイスケール、I=インデックスカラー、F=フルカラーをしめし、Tが付くものは透過色指定あり、Aはαチャネル有りを表す。
+</div>
+
+
+<br clear=all>
+
+<h1>本文チェック</h1>
+
+<h2>縦中横候補(1-3文字の半角英数字)</h2>
+本文中の、１～３文字の半角英数字を、縦中横候補として表示します。<span class=help>解説</span><div class=guide>EPUB内の各XHTMLファイルで、本文縦書き時に縦中横で表示させなければならない可能性があるにもかかわらず、縦中横のタグが付加されていない１～３文字の半角英数字をチェックし、一覧で表示します。必要に応じてタグの追記を行ってください。<br />
+なお現在、全てのビューアで問題なく縦中横表示が可能なのは、数字は3桁、英文字は2文字までです。これを超えた場合は、たとえ縦中横のタグが付加されていたとしても、指定が反映されず横転表示されてしまう可能性があります。表記方法を変更する、外字画像化するなどの対策を検討してください。</div>
+<br/>
+全9件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-004.xhtml</th>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+&lt;h3<span class=s>&gt;JIS外</span>文字&lt;/h3&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-010.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;p<span class=s>&gt;12ペ</span>ージ参照——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-012.xhtml</th>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+&lt;p<span class=s>&gt;195頁</span>参照本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD”&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-021.xhtml</th>
+</tr>
+<tr>
+<th>13</th>
+<td class=s>
+
+&lt;h2 class=&quot;oo-midashi&quot;<span class=s>&gt;tcy（</span>text-combine）指定&lt;/h2&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-023.xhtml</th>
+</tr>
+<tr>
+<th>13</th>
+<td class=s>
+
+&lt;p&gt;あいうえお <span class=s>“ABC”</span> かきくけこ〝さしす〟せそ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;font-080per&quot;&gt;<span class=s>（ABCの</span>前後のダブルクォートがダブルミニュートになっていないかどうか。さしすの前後のダブルミニュートは対照用）&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-033.xhtml</th>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+&lt;p<span class=s>&gt;50頁</span>参照本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-035.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;bold&quot;&gt;margin-left<span class=s>：0（</span>対照用）&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-036.xhtml</th>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+&lt;p&gt;（外字画像が白黒反転表示されているかどうかを確認するために<span class=s>、RS側</span>で背景色を変えてチェックすること。）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>数字+「ページ/頁」</h2>
+「○○ページ参照」などの記述を避けるため、「数字+ページ(頁)」の記述がされている部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内で「数字+ページ(頁)」の表記のある箇所を抽出し、一覧表示する。固定ページの概念がない EPUB では「○ ○ページ参照」といった表記は意味をなさなくなるので、これらの表記を修正する必要がある。一覧抽出することで修正 忘れを抑止することができる。<br />
+参考: 検索正規表現 = [0-9０-９一二三四五六七八九〇前次]+(&lt;[^&gt;]+&gt;)?(ページ|頁)</div>
+<br/>
+全3件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-010.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;p&gt;<span class=s>12ページ</span>参照——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-012.xhtml</th>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+&lt;p&gt;<span class=s>195頁</span>参照本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD”&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-033.xhtml</th>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+&lt;p&gt;<span class=s>50頁</span>参照本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>パラグラフ開始直後</h2>
+pタグの直後のパラグラフ開始文字を抽出<span class=help>解説</span><div class=guide>コンテンツ内のpタグの直後の文字を一覧表示する。段落頭字下げのチェックのための項目。</div>
+<br/>
+全447件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-002.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20B9F「𠮟」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20BB7「𠮷」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2000B「𠀋」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20210「𠈓」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20610「𠘑」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2074F「𠝏」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20807「𠠇」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20DE1「𠷡」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20E6D「𠹭」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2131B「𡌛」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+23451「𣑑」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+235C4「𣗄」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24103「𤄃」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+242EE「𤋮」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+25120「𥄢」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2550E「𥔎」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+26280「𦊆」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+273FE「𧏾」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+285C9「𨗉」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+292B1「𩊱」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+20000「𠀀」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+1F110「🄐」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+1F130「🄰」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+1F150「🅐」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-003.xhtml</th>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;（</span>どちらの字形で表示されているかを見るためのもの）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-004.xhtml</th>
+</tr>
+<tr>
+<th>12</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+9022「逢」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>13</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+82A6「芦」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+98F4「飴」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+6EA2「溢」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+8328「茨」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+9C2F「鰯」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+6DEB「淫」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+8FC2「迂」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+53A9「厩」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+5642「噂」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+4E04 「丄」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+4E5c 「乜」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+4E13 「专」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-006.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+53DB E0100「叛󠄀」（基底文字「叛」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+5642 E0100「噂󠄀」（基底文字「噂」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+6666 E0100「晦󠄀」（基底文字「晦」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+701E E0100「瀞󠄀」（基底文字「瀞」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+845B E0100「葛󠄀」（基底文字「葛」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+8FBB E0100「辻󠄀」（基底文字「辻」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+9022 E0100「逢󠄀」（基底文字「逢」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+98F4 E0100「飴󠄀」（基底文字「飴」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+7149 E0101「煉󠄁」（基底文字「煉」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+7953 E0101「祓󠄁」（基底文字「祓」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+242EE E0101「𤋮󠄁」（基底文字「𤋮」）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-008.xhtml</th>
+</tr>
+<tr>
+<th>13</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2000「 」（EN QUAD）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2001「 」（EM QUAD）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2002「 」（EN SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2003「 」（EM SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2004「 」（THREE-PER-EM SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2005「 」（FOUR-PER-EM SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2006「 」（SIX-PER-EM SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2007「 」（FIGURE SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2008「 」（PUNCTUATION SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2009「 」（THIN SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+200A「 」（HAIR SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+200B「​」（ZERO WIDTH SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+200C「‌」（ZERO WIDTH NON-JOINER）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+200D「‍」（ZERO WIDTH JOINER）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+205F「 」（MEDIUM MATHEMATICAL SPACE）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-010.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2014「——」（EM DASH）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;1</span>2ページ参照——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る——本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2015「――」（HORIZONTAL BAR）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る――本文テキスト入る――本文テキスト入る――本文テキスト入る――本文テキスト入る――本文テキスト入る――本文テキスト入る――本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2500「──」（BOX DRAWINGS LIGHT HORIZONTAL）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る──本文テキスト入る──本文テキスト入る──本文テキスト入る──本文テキスト入る──本文テキスト入る──本文テキスト入る──本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+FE31「︱︱」（PRESENTATION FORM FOR VERTICAL EM DASH）&lt;span class=&quot;font-080per&quot;&gt;※非推奨&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る︱︱本文テキスト入る︱︱本文テキスト入る︱︱本文テキスト入る︱︱本文テキスト入る︱︱本文テキスト入る︱︱本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+FE33「︳︳」（PRESENTATION FORM FOR VERTICAL LOW LINE）&lt;span class=&quot;font-080per&quot;&gt;※非推奨&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る︳︳本文テキスト入る︳︳本文テキスト入る︳︳本文テキスト入る︳︳本文テキスト入る︳︳本文テキスト入る︳︳本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+FF0D「－－」（FULLWIDTH HYPHEN-MINUS）&lt;span class=&quot;font-080per&quot;&gt;※非推奨&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る－－本文テキスト入る－－本文テキスト入る－－本文テキスト入る－－本文テキスト入る－－本文テキスト入る－－本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30FC「ーー」（KATAKANA-HIRAGANA PROLONGED SOUND MARK）&lt;span class=&quot;font-080per&quot;&gt;※超非推奨&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入るーー本文テキスト入るーー本文テキスト入るーー本文テキスト入るーー本文テキスト入るーー本文テキスト入るーー本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-012.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+201C「“」（LEFT DOUBLE QUOTATION MARK）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+201D「”」（RIGHT DOUBLE QUOTATION MARK）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;用例&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;1</span>95頁参照本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD”&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;font-070per&quot;&gt;※ダブルクォートがノノカギ（ダブルミニュート）に化けていないかをチェック&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;用例（SIDEWAYS指定付き）&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD” 本文入る “ABCD”&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2018「‘」（LEFT SINGLE QUOTATION MARK）※参考&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2019「’」（RIGHT SINGLE QUOTATION MARK）※参考&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;用例&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;用例（SIDEWAYS指定付き）&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る 本文入る ‘ABCD’ 本文入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-014.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+005C「\」（REVERSE SOLIDUS）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+005C「&amp;#x005C;」（REVERSE SOLIDUS）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+005C「&amp;#92;」（REVERSE SOLIDUS）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;font-070per&quot;&gt;※円記号として表示されていないかをチェック&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-016.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;1&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;12&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;123&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;1234&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;A&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;AB&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;ABC&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;ABCD&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;A1&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;A1B&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;tcy&quot;&gt;A1B2&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-018.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003F　「?」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0021　「!」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003C　「&amp;lt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003E　「&amp;gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2266　「≦」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30AF,U+309A　「ク゚」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30B1,U+309A　「ケ゚」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30B3,U+309A　「コ゚」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30BB,U+309A　「セ゚」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30C4,U+309A　「ツ゚」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30C8,U+309A　「ト゚」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0391　「Α」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0392　「Β」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0393　「Γ」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F8　「⓸」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F9　「⓹」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0410　「А」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0411　「Б」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0412　「В」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2049　「⁉」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+00A9　「©」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+00AE　「®」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+00E6,U+0300　「æ̀」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0254,U+0300　「ɔ̀」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0254,U+0301　「ɔ́」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24ED　「⓭」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24EE　「⓮」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24EF　「⓯」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2170　「ⅰ」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2171　「ⅱ」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>44</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2172　「ⅲ」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>45</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2462　「③」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>46</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2463　「④」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>47</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2464　「⑤」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>48</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+339C　「㎜」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>49</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+339D　「㎝」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>50</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+339E　「㎞」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>51</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+261E　「☞」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>52</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-019.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003F　「&lt;span class=&quot;upright&quot;&gt;?&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003D　「&lt;span class=&quot;upright&quot;&gt;=&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003C　「&lt;span class=&quot;upright&quot;&gt;&amp;lt;&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003E　「&lt;span class=&quot;upright&quot;&gt;&amp;gt;&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2266　「&lt;span class=&quot;upright&quot;&gt;≦&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2934　「&lt;span class=&quot;upright&quot;&gt;⤴&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2935　「&lt;span class=&quot;upright&quot;&gt;⤵&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30BB,U+309A　「&lt;span class=&quot;upright&quot;&gt;セ゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30C4,U+309A　「&lt;span class=&quot;upright&quot;&gt;ツ゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30C8,U+309A　「&lt;span class=&quot;upright&quot;&gt;ト゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0391　「&lt;span class=&quot;upright&quot;&gt;Α&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0392　「&lt;span class=&quot;upright&quot;&gt;Β&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0393　「&lt;span class=&quot;upright&quot;&gt;Γ&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0394　「&lt;span class=&quot;upright&quot;&gt;Δ&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F6　「&lt;span class=&quot;upright&quot;&gt;⓶&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F7　「&lt;span class=&quot;upright&quot;&gt;⓷&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F8　「&lt;span class=&quot;upright&quot;&gt;⓸&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F9　「&lt;span class=&quot;upright&quot;&gt;⓹&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0410　「&lt;span class=&quot;upright&quot;&gt;А&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0411　「&lt;span class=&quot;upright&quot;&gt;Б&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0412　「&lt;span class=&quot;upright&quot;&gt;В&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+3255　「&lt;span class=&quot;upright&quot;&gt;㉕&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2049　「&lt;span class=&quot;upright&quot;&gt;⁉&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+025A,U+0300　「&lt;span class=&quot;upright&quot;&gt;ɚ`&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+025A,U+0301　「&lt;span class=&quot;upright&quot;&gt;ɚ́́&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2776　「&lt;span class=&quot;upright&quot;&gt;❶&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2777　「&lt;span class=&quot;upright&quot;&gt;❷&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24D2　「&lt;span class=&quot;upright&quot;&gt;ⓒ&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24D3　「&lt;span class=&quot;upright&quot;&gt;ⓓ&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24D4　「&lt;span class=&quot;upright&quot;&gt;ⓔ&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>44</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2460　「&lt;span class=&quot;upright&quot;&gt;①&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>45</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+261E　「&lt;span class=&quot;upright&quot;&gt;☞&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>46</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-020.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003F　「&lt;span class=&quot;sideways&quot;&gt;?&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003C　「&lt;span class=&quot;sideways&quot;&gt;&amp;lt;&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003E　「&lt;span class=&quot;sideways&quot;&gt;&amp;gt;&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2266　「&lt;span class=&quot;sideways&quot;&gt;≦&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2113　「&lt;span class=&quot;sideways&quot;&gt;ℓ&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30A0　「&lt;span class=&quot;sideways&quot;&gt;゠&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2013　「&lt;span class=&quot;sideways&quot;&gt;–&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+304B,U+309A　「&lt;span class=&quot;sideways&quot;&gt;か゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+304D,U+309A　「&lt;span class=&quot;sideways&quot;&gt;き゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+304F,U+309A　「&lt;span class=&quot;sideways&quot;&gt;く゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+03B3　「&lt;span class=&quot;sideways&quot;&gt;γ&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+03B4　「&lt;span class=&quot;sideways&quot;&gt;δ&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+03B5　「&lt;span class=&quot;sideways&quot;&gt;Ε&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F5　「&lt;span class=&quot;sideways&quot;&gt;⓵&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F6　「&lt;span class=&quot;sideways&quot;&gt;⓶&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0432　「&lt;span class=&quot;sideways&quot;&gt;в&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0433　「&lt;span class=&quot;sideways&quot;&gt;г&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0434　「&lt;span class=&quot;sideways&quot;&gt;Д&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+3251　「&lt;span class=&quot;sideways&quot;&gt;㉑&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+3252　「&lt;span class=&quot;sideways&quot;&gt;㉒&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0259,U+0301　「&lt;span class=&quot;sideways&quot;&gt;ə́́&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+025A,U+0300　「&lt;span class=&quot;sideways&quot;&gt;ɚ`&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+025A,U+0301　「&lt;span class=&quot;sideways&quot;&gt;ɚ́́&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2776　「&lt;span class=&quot;sideways&quot;&gt;❶&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2777　「&lt;span class=&quot;sideways&quot;&gt;❷&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2778　「&lt;span class=&quot;sideways&quot;&gt;❸&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+33A1　「&lt;span class=&quot;sideways&quot;&gt;㎡&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+261E　「&lt;span class=&quot;sideways&quot;&gt;☞&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-021.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003F　「&lt;span class=&quot;tcy&quot;&gt;?&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0021　「&lt;span class=&quot;tcy&quot;&gt;!&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003C　「&lt;span class=&quot;tcy&quot;&gt;&amp;lt;&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+003E　「&lt;span class=&quot;tcy&quot;&gt;&amp;gt;&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2266　「&lt;span class=&quot;tcy&quot;&gt;≦&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2113　「&lt;span class=&quot;tcy&quot;&gt;ℓ&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+30A0　「&lt;span class=&quot;tcy&quot;&gt;゠&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2013　「&lt;span class=&quot;tcy&quot;&gt;–&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+304B,U+309A　「&lt;span class=&quot;tcy&quot;&gt;か゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+304D,U+309A　「&lt;span class=&quot;tcy&quot;&gt;き゚&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+03B2　「&lt;span class=&quot;tcy&quot;&gt;β&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+03B3　「&lt;span class=&quot;tcy&quot;&gt;γ&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+03B4　「&lt;span class=&quot;tcy&quot;&gt;δ&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+03B5　「&lt;span class=&quot;tcy&quot;&gt;ε&lt;/span&gt;」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F5　「&lt;span class=&quot;tcy&quot;&gt;⓵&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+24F6　「&lt;span class=&quot;tcy&quot;&gt;⓶&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0433　「&lt;span class=&quot;tcy&quot;&gt;г&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0434　「&lt;span class=&quot;tcy&quot;&gt;д&lt;/span&gt;」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+3251　「&lt;span class=&quot;tcy&quot;&gt;㉑&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+3252　「&lt;span class=&quot;tcy&quot;&gt;㉒&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+3253　「&lt;span class=&quot;tcy&quot;&gt;㉓&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+0259,U+0301　「&lt;span class=&quot;tcy&quot;&gt;ə́&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+025A,U+0300　「&lt;span class=&quot;tcy&quot;&gt;ɚ̀&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+025A,U+0301　「&lt;span class=&quot;tcy&quot;&gt;ɚ́&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2776　「&lt;span class=&quot;tcy&quot;&gt;❶&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2777　「&lt;span class=&quot;tcy&quot;&gt;❷&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2778　「&lt;span class=&quot;tcy&quot;&gt;❸&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+2779　「&lt;span class=&quot;tcy&quot;&gt;❹&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+33A1　「&lt;span class=&quot;tcy&quot;&gt;㎡&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;U</span>+261E　「&lt;span class=&quot;tcy&quot;&gt;☞&lt;/span&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>44</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-022.xhtml</th>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;（</span>ダブルミニュートに化けていないかを見る）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-023.xhtml</th>
+</tr>
+<tr>
+<th>11</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>13</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお “ABC” かきくけこ〝さしす〟せそ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;font-080per&quot;&gt;（ABCの前後のダブルクォートがダブルミニュートになっていないかどうか。さしすの前後のダブルミニュートは対照用）&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-025.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;italic&quot;&gt;この部分をイタリック指定&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-026.xhtml</th>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;（</span>上付き・下付き・欧文のベースライン指定の表示状態）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-027.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいう&amp;lt;span class=&quot;super&quot;&amp;gt;＊&amp;lt;/span&amp;gt;えお&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いう&lt;span class=&quot;super&quot;&gt;＊&lt;/span&gt;えお&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;かきく&amp;lt;span class=&quot;sub&quot;&amp;gt;＊&amp;lt;/span&amp;gt;けこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;か</span>きく&lt;span class=&quot;sub&quot;&gt;＊&lt;/span&gt;けこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-baseline&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-baseline&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-super&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-super&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>44</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>45</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>47</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-sub&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>48</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>49</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>50</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>51</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-sub&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>52</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>53</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>55</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-top&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>56</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>57</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>58</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>59</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-top&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>60</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>61</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>63</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-middle&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>64</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>65</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>66</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>67</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-middle&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>68</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>69</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>71</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-bottom&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>72</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>73</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>74</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>75</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-bottom&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>76</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>77</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>79</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-text-top&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>80</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>81</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>82</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>83</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-text-top&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>84</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>85</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>87</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;あいうえお&amp;lt;span class=&quot;valign-text-bottom&quot;&amp;gt;abcde&amp;lt;/span&amp;gt;かきくけこ&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>88</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>89</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;　</span>　　↓&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>90</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>91</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;あ</span>いうえお&lt;span class=&quot;valign-text-bottom&quot;&gt;abcde&lt;/span&gt;かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>93</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-029.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;cooperblackstd&quot;&gt;In another moment down went Alice after it, never once considering how in the world she was to get out again.&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;対</span>照用通常ゴシック&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;gfont&quot;&gt;In another moment down went Alice after it, never once considering how in the world she was to get out again.&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;anna&quot;&gt;In another moment down went Alice after it, never once considering how in the world she was to get out again.&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;対</span>照用通常ゴシック&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;gfont&quot;&gt;In another moment down went Alice after it, never once considering how in the world she was to get out again.&lt;/span&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-031.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ指定なし（対照用）&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ0.10em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ0.20em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ0.25em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ0.30em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字ツメ指定なし（対照用）&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字ツメ-0.10em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字ツメ-0.20em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>45</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字ツメ-0.25em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>48</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字ツメ-0.30em&lt;/span&gt;：&lt;br /&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>52</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-033.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキノーマル（対照用）&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;5</span>0頁参照本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ1em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ1.5em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ1.75em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ2em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ2.5em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>44</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;文字アキ3em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>46</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>47</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>48</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;（</span>きちんと行間指定が反映されているかを見る）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-035.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;margin-left：0（対照用）&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↓</span>この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↑</span>この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;margin-left：10%&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↓</span>この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↑</span>この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;margin-left：20%&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↓</span>この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↑</span>この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;margin-left：0.25em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↓</span>この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↑</span>この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;margin-left：0.5em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↓</span>この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↑</span>この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>44</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;margin-left：1em&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>46</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↓</span>この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る↓この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>48</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;↑</span>この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る↑この間隔を見る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>50</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>51</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;（</span>きちんとmergin指定が反映されているかを見る）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>53</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>span class=&quot;bold&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;/p&amp;gt;による改行指定（対照用）&lt;/span&gt;：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>54</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>55</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>56</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;本</span>文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る本文テキスト入る&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-036.xhtml</th>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;（</span>外字画像が白黒反転表示されているかどうかを確認するために、RS側で背景色を変えてチェックすること。）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-037.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;例</span>：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;「&amp;lt;img class=&quot;gaiji&quot; src = &quot;../image/gaiji-001.png&quot; alt = &quot;嬴&quot; /&amp;gt;」&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;「</span>&lt;img class=&quot;gaiji&quot; src = &quot;../image/gaiji-001.png&quot; alt = &quot;嬴&quot; /&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;例</span>：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;「</span>さま&lt;img class=&quot;gaiji-line&quot; src = &quot;../image/gaiji-002.png&quot; alt = &quot;〴〵&quot; /&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;例</span>：&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&amp;</span>lt;p&amp;gt;「&amp;lt;img class=&quot;gaiji-wide&quot; src = &quot;../image/gaiji-003.png&quot; alt = &quot;beer!&quot; /&amp;gt;」&amp;lt;/p&amp;gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;「</span>&lt;img class=&quot;gaiji-wide&quot; src = &quot;../image/gaiji-003.png&quot; alt = &quot;beer!&quot; /&gt;」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-cover.xhtml</th>
+</tr>
+<tr>
+<th>12</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>img class=&quot;fit&quot; src=&quot;../image/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-credit.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;チ</span>ェッカーテストサンプル&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;三</span>陽社メディア開発室／電書ラボ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-toc.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br/&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>br/&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-001.xhtml#toc-23C4316DEDF9-496F-B7F1-AEBCC57A30EF&quot;&gt;チェック項目　２-３-１　「サロゲートペア文字」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-003.xhtml#toc-2E4C94A3DB8A-4E63-9E9D-FE5E7935F29C&quot;&gt;チェック項目　２-４-１　「JIS2000と2004の字形差」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-005.xhtml#toc-BD552BD9F336-4A18-9401-4BCAD131DC46&quot;&gt;チェック項目　２-５-１　「Unicode IVS文字」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-007.xhtml#toc-A810053665F8-43D7-A6E9-FCF075EE2A3C&quot;&gt;チェック項目　２-７-１　「特殊幅スペース」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-009.xhtml#toc-CD58EB581785-4844-8F80-EBBC04DF601A&quot;&gt;チェック項目　２-８-１　「二倍ダーシ」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-011.xhtml#toc-3B37B446837F-4A1C-87C2-D4F60B6F9222&quot;&gt;チェック項目　２-９-１　「ダブルミニュート」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-013.xhtml#toc-AFD96C08C017-410E-9228-C9603D0A63C0&quot;&gt;チェック項目　２-&lt;span class=&quot;tcy&quot;&gt;10&lt;/span&gt;-１　「半角バックスラッシュ」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-015.xhtml#toc-745111D1A763-4DB4-9627-8592764D4687&quot;&gt;チェック項目　３-１-１　「縦中横桁数」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-017.xhtml#toc-99CAA067DF0A-4852-8D60-D2796866AD8D&quot;&gt;チェック項目　３-２-１　「正立・横転指定」（text-orientation）&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-022.xhtml#toc-4C2A8804CA95-4539-B253-7A8C8852C42B&quot;&gt;チェック項目　３-３-１　「縦書き時のダブルクォート表示」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-024.xhtml#toc-24CAF2FC50D1-48E7-8EA4-5A222B6D0A8B&quot;&gt;チェック項目　３-４-１　「和文へのイタリック指定」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-026.xhtml#toc-059224D9137A-41BB-BF71-372CD64A4FA6&quot;&gt;チェック項目　３-６-１/３-７-１　「文字の表示位置」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-028.xhtml#toc-12C639EE7642-49C9-B1AF-F8A225AEDFE5&quot;&gt;チェック項目　３-９-２　「埋め込みフォント」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-030.xhtml#toc-3AE500330F08-4F3D-BC10-7DF22E7D2766&quot;&gt;チェック項目　４-３-１　「字間アキ・ツメ指定」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-032.xhtml#toc-BBDDBCA67C0F-4375-AD59-818EE751A0AC&quot;&gt;チェック項目　４-４-１　「行間アキ指定」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-034.xhtml#toc-4DAEC3C1ADF1-444B-961D-E1883155AD82&quot;&gt;チェック項目　４-９-１　「行間アキ指定」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+<span class=s>&lt;p&gt;&lt;</span>a href=&quot;p-036.xhtml#toc-B899573A2C3F-4785-AF49-6F5880CD3401&quot;&gt;チェック項目　８-１-１　「外字画像の白黒反転表示」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>縦中横指定文字</h2>
+class=tcyで指定されたテキスト部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内の「&lt;span class=&quot;tcy&quot;&gt; 〜 &lt;/span&gt;」でマークアップされた縦書き時正立指定の文字を抽出し、一覧表示する。</div>
+<br/>
+全46件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/navigation-documents.xhtml</th>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+&lt;li&gt;&lt;a href=&quot;xhtml/p-013.xhtml#toc-AFD96C08C017-410E-9228-C9603D0A63C0&quot;&gt;チェック項目　２-&lt;span class=&quot;<span class=s>tcy&quot;&gt;10&lt;/span&gt;</span>-１　「半角バックスラッシュ」&lt;/a&gt;&lt;/li&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-013.xhtml</th>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+&lt;h1 class=&quot;tobira-midashi&quot; id=&quot;toc-AFD96C08C017-410E-9228-C9603D0A63C0&quot;&gt;チェック項目　２-&lt;span class=&quot;<span class=s>tcy&quot;&gt;10&lt;/span&gt;</span>-１　「半角バックスラッシュ」&lt;/h1&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-014.xhtml</th>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+&lt;h2 class=&quot;oo-midashi&quot;&gt;文字参照（&lt;span class=&quot;<span class=s>tcy&quot;&gt;16&lt;/span&gt;</span>進数）として挿入&lt;/h2&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+&lt;h2 class=&quot;oo-midashi&quot;&gt;文字参照（&lt;span class=&quot;<span class=s>tcy&quot;&gt;10&lt;/span&gt;</span>進数）として挿入&lt;/h2&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-016.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;1&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;12&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;123&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;1234&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;A&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;AB&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;ABC&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;ABCD&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;A1&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;A1B&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+&lt;p&gt;&lt;span class=&quot;<span class=s>tcy&quot;&gt;A1B2&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-021.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+&lt;p&gt;U+003F　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;?&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;p&gt;U+0021　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;!&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+&lt;p&gt;U+003C　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;&amp;lt;&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+&lt;p&gt;U+003E　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;&amp;gt;&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+&lt;p&gt;U+2266　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;≦&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+&lt;p&gt;U+2113　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;ℓ&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+&lt;p&gt;U+30A0　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;゠&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+&lt;p&gt;U+2013　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;–&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+&lt;p&gt;U+304B,U+309A　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;か゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+&lt;p&gt;U+304D,U+309A　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;き゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+&lt;p&gt;U+03B2　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;β&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+&lt;p&gt;U+03B3　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;γ&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+&lt;p&gt;U+03B4　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;δ&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+&lt;p&gt;U+03B5　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;ε&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+&lt;p&gt;U+24F5　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;⓵&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+&lt;p&gt;U+24F6　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;⓶&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+&lt;p&gt;U+0433　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;г&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+&lt;p&gt;U+0434　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;д&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+&lt;p&gt;U+3251　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;㉑&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+&lt;p&gt;U+3252　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;㉒&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+&lt;p&gt;U+3253　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;㉓&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+&lt;p&gt;U+0259,U+0301　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;ə́&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+&lt;p&gt;U+025A,U+0300　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;ɚ̀&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+&lt;p&gt;U+025A,U+0301　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;ɚ́&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+&lt;p&gt;U+2776　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;❶&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+&lt;p&gt;U+2777　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;❷&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+&lt;p&gt;U+2778　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;❸&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+&lt;p&gt;U+2779　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;❹&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+&lt;p&gt;U+33A1　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;㎡&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+&lt;p&gt;U+261E　「&lt;span class=&quot;<span class=s>tcy&quot;&gt;☞&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-toc.xhtml</th>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+&lt;p&gt;&lt;a href=&quot;p-013.xhtml#toc-AFD96C08C017-410E-9228-C9603D0A63C0&quot;&gt;チェック項目　２-&lt;span class=&quot;<span class=s>tcy&quot;&gt;10&lt;/span&gt;</span>-１　「半角バックスラッシュ」&lt;/a&gt;&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>正立指定文字</h2>
+class=uprightで指定されたテキスト部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内の「&lt;span class=&quot;upright&quot;&gt; 〜 &lt;/span&gt;」でマークアップされた縦書き時正立指定の文字を抽出し、一覧表 示する。文字によっては手元の環境で正立表示されていても、一部の RS で横転表示されてしまうものが存在するため、明示的に正立指定のタグを挿入しなければならないものが存在する。該当する文字に関しては、KADOKAWA-EPUB PORTAL<br />
+(http://kadokawa-epub.bookwalker.co.jp/)で資料が公開されている。<br />
+※ただし、現状タグのあるもののみを抽出しているので、本来タグ付加が必要でも付加されていない文字を抽出できない。</div>
+<br/>
+全32件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-019.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+&lt;p&gt;U+003F　「&lt;span class=&quot;<span class=s>upright&quot;&gt;?&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;p&gt;U+003D　「&lt;span class=&quot;<span class=s>upright&quot;&gt;=&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+&lt;p&gt;U+003C　「&lt;span class=&quot;<span class=s>upright&quot;&gt;&amp;lt;&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+&lt;p&gt;U+003E　「&lt;span class=&quot;<span class=s>upright&quot;&gt;&amp;gt;&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+&lt;p&gt;U+2266　「&lt;span class=&quot;<span class=s>upright&quot;&gt;≦&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+&lt;p&gt;U+2934　「&lt;span class=&quot;<span class=s>upright&quot;&gt;⤴&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+&lt;p&gt;U+2935　「&lt;span class=&quot;<span class=s>upright&quot;&gt;⤵&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+&lt;p&gt;U+30BB,U+309A　「&lt;span class=&quot;<span class=s>upright&quot;&gt;セ゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+&lt;p&gt;U+30C4,U+309A　「&lt;span class=&quot;<span class=s>upright&quot;&gt;ツ゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+&lt;p&gt;U+30C8,U+309A　「&lt;span class=&quot;<span class=s>upright&quot;&gt;ト゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+&lt;p&gt;U+0391　「&lt;span class=&quot;<span class=s>upright&quot;&gt;Α&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+&lt;p&gt;U+0392　「&lt;span class=&quot;<span class=s>upright&quot;&gt;Β&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+&lt;p&gt;U+0393　「&lt;span class=&quot;<span class=s>upright&quot;&gt;Γ&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+&lt;p&gt;U+0394　「&lt;span class=&quot;<span class=s>upright&quot;&gt;Δ&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+&lt;p&gt;U+24F6　「&lt;span class=&quot;<span class=s>upright&quot;&gt;⓶&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+&lt;p&gt;U+24F7　「&lt;span class=&quot;<span class=s>upright&quot;&gt;⓷&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+&lt;p&gt;U+24F8　「&lt;span class=&quot;<span class=s>upright&quot;&gt;⓸&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+&lt;p&gt;U+24F9　「&lt;span class=&quot;<span class=s>upright&quot;&gt;⓹&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+&lt;p&gt;U+0410　「&lt;span class=&quot;<span class=s>upright&quot;&gt;А&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+&lt;p&gt;U+0411　「&lt;span class=&quot;<span class=s>upright&quot;&gt;Б&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+&lt;p&gt;U+0412　「&lt;span class=&quot;<span class=s>upright&quot;&gt;В&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+&lt;p&gt;U+3255　「&lt;span class=&quot;<span class=s>upright&quot;&gt;㉕&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+&lt;p&gt;U+2049　「&lt;span class=&quot;<span class=s>upright&quot;&gt;⁉&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+&lt;p&gt;U+025A,U+0300　「&lt;span class=&quot;<span class=s>upright&quot;&gt;ɚ`&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+&lt;p&gt;U+025A,U+0301　「&lt;span class=&quot;<span class=s>upright&quot;&gt;ɚ́́&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+&lt;p&gt;U+2776　「&lt;span class=&quot;<span class=s>upright&quot;&gt;❶&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+&lt;p&gt;U+2777　「&lt;span class=&quot;<span class=s>upright&quot;&gt;❷&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+&lt;p&gt;U+24D2　「&lt;span class=&quot;<span class=s>upright&quot;&gt;ⓒ&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>42</th>
+<td class=s>
+
+&lt;p&gt;U+24D3　「&lt;span class=&quot;<span class=s>upright&quot;&gt;ⓓ&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+&lt;p&gt;U+24D4　「&lt;span class=&quot;<span class=s>upright&quot;&gt;ⓔ&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>44</th>
+<td class=s>
+
+&lt;p&gt;U+2460　「&lt;span class=&quot;<span class=s>upright&quot;&gt;①&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>45</th>
+<td class=s>
+
+&lt;p&gt;U+261E　「&lt;span class=&quot;<span class=s>upright&quot;&gt;☞&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>横倒し指定文字</h2>
+class=sidewaysで指定されたテキスト部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内の「&lt;span class=&quot;sideways&quot;&gt; 〜 &lt;/span&gt;」でマークアップされた縦書き時横倒し指定の文字を抽出し、一 覧表示する。文字によっては手元の環境で横転表示されていても、一部の RS で正立表示されてしまうものが存在するため、明示的に横転指定のタグを挿入しなければならないものが存在する。該当する文字に関しては、KADOKAWA-EPUB PORTAL(http://kadokawa-epub.bookwalker.co.jp/)で資料が公開されている。<br />
+※ただし、現状タグのあるもののみを抽出しているので、本来タグ付加が必要でも付加されていない文字を抽出できない。</div>
+<br/>
+全28件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-020.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+&lt;p&gt;U+003F　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;?&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;p&gt;U+003C　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;&amp;lt;&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>16</th>
+<td class=s>
+
+&lt;p&gt;U+003E　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;&amp;gt;&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+&lt;p&gt;U+2266　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;≦&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+&lt;p&gt;U+2113　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;ℓ&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+&lt;p&gt;U+30A0　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;゠&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+&lt;p&gt;U+2013　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;–&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+&lt;p&gt;U+304B,U+309A　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;か゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+&lt;p&gt;U+304D,U+309A　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;き゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>23</th>
+<td class=s>
+
+&lt;p&gt;U+304F,U+309A　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;く゚&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>24</th>
+<td class=s>
+
+&lt;p&gt;U+03B3　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;γ&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+&lt;p&gt;U+03B4　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;δ&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>26</th>
+<td class=s>
+
+&lt;p&gt;U+03B5　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;Ε&lt;/span&gt;</span>」（ギリシア文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+&lt;p&gt;U+24F5　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;⓵&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+&lt;p&gt;U+24F6　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;⓶&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>29</th>
+<td class=s>
+
+&lt;p&gt;U+0432　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;в&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+&lt;p&gt;U+0433　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;г&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>31</th>
+<td class=s>
+
+&lt;p&gt;U+0434　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;Д&lt;/span&gt;</span>」（キリル文字）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>32</th>
+<td class=s>
+
+&lt;p&gt;U+3251　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;㉑&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+&lt;p&gt;U+3252　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;㉒&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+&lt;p&gt;U+0259,U+0301　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;ə́́&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+&lt;p&gt;U+025A,U+0300　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;ɚ`&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>36</th>
+<td class=s>
+
+&lt;p&gt;U+025A,U+0301　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;ɚ́́&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>37</th>
+<td class=s>
+
+&lt;p&gt;U+2776　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;❶&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>38</th>
+<td class=s>
+
+&lt;p&gt;U+2777　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;❷&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+&lt;p&gt;U+2778　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;❸&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+&lt;p&gt;U+33A1　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;㎡&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>41</th>
+<td class=s>
+
+&lt;p&gt;U+261E　「&lt;span class=&quot;<span class=s>sideways&quot;&gt;☞&lt;/span&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>画像外字使用</h2>
+class=gaiji指定の画像外字部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内で画像外字のタグが挿入されている箇所を抽出し、一覧表示する。個々の外字画像の字形に関しては「画像 外字一覧」を参照のこと。<br />
+XMDF や .book などから変換した場合などでは、もともと文字コードが Shift_JIS であったために、EPUB で使用される Unicode では画像外字を使用しなくても表現できる文字を外字画像化しているケースが存在する。<br />
+また、「正字」の表現を目的として画像外字を使用していたケースでは、JISX0213:2000 から JISX0213:2004 への変更に伴い、 多くの字形がデフォルトで表現できるようになっているので、本当に外字表現が必要なのかどうかを確認し、必要なけれ ば通常のテキストに置換すること。<br />
+画像外字はアクセシビリティを阻害する側面があり、また、背景色を黒に設定した際に外字が背景に溶け込んで視認できなくなる RS も存在するため、人名漢字などで本当に字形の保持が必要なケース以外では使用を控えた方が良い。</div>
+<br/>
+全3件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-037.xhtml</th>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+&lt;p&gt;「<span class=s>&lt;img class=&quot;gaiji&quot; src = &quot;../image/gaiji-001.png&quot; alt = &quot;嬴&quot; /&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+&lt;p&gt;「さま<span class=s>&lt;img class=&quot;gaiji-line&quot; src = &quot;../image/gaiji-002.png&quot; alt = &quot;〴〵&quot; /&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>34</th>
+<td class=s>
+
+&lt;p&gt;「<span class=s>&lt;img class=&quot;gaiji-wide&quot; src = &quot;../image/gaiji-003.png&quot; alt = &quot;beer!&quot; /&gt;</span>」&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>バックスラッシュ</h2>
+バックスラッシュが円記号として使われていないか確認<span class=help>解説</span><div class=guide>Shift-JISでは、0x5Cのコードが¥マークとして使われていたが、Unicodeではバックスラッシュになる。半角の¥マークを使う場合は、¥(U+A5)を使う必要がある。</div>
+<br/>
+全3件 <span class="open">表示する</span>
+<div class=glist>
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-014.xhtml</th>
+</tr>
+<tr>
+<th>14</th>
+<td class=s>
+
+&lt;p&gt;U+005C「<span class=s>\</span>」（REVERSE SOLIDUS）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>17</th>
+<td class=s>
+
+&lt;p&gt;U+005C「<span class=s>&amp;#x005C</span>;」（REVERSE SOLIDUS）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+&lt;p&gt;U+005C「<span class=s>&amp;#92</span>;」（REVERSE SOLIDUS）&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+
+
+<h1>電書協CSSチェック</h1>
+<span class=help>解説</span>
+<div class=guide>電書協準拠EPUBで使われている各種組版スタイルの利用箇所を抽出する。</div>
+<h2>イタリック指定文字</h2>
+class=italicで指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+全1件 <span class="open">表示する</span>
+<div class="clist">
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-025.xhtml</th>
+</tr>
+<tr>
+<th>18</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>italic&quot;&gt;この部分をイタリック指定&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>文字位置指定クラス</h2>
+class=super/sub/valine-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+全10件 <span class="open">表示する</span>
+<div class="clist">
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-027.xhtml</th>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+&lt;p&gt;あいう&lt;span class=&quot;<span class=s>super&quot;&gt;＊&lt;/span&gt;</span>えお&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+&lt;p&gt;かきく&lt;span class=&quot;<span class=s>sub&quot;&gt;＊&lt;/span&gt;</span>けこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-baseline&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-super&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>51</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-sub&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>59</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-top&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>67</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-middle&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>75</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-bottom&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>83</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-text-top&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>91</th>
+<td class=s>
+
+&lt;p&gt;あいうえお&lt;span class=&quot;<span class=s>valign-text-bottom&quot;&gt;abcde&lt;/span&gt;</span>かきくけこ&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>文字アキ指定クラス</h2>
+class=lspacing-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+全8件 <span class="open">表示する</span>
+<div class="clist">
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-031.xhtml</th>
+</tr>
+<tr>
+<th>19</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-0em10&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>22</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-0em20&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-0em25&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>28</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-0em30&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-minus0em10&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>43</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-minus0em20&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>46</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-minus0em25&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>49</th>
+<td class=s>
+
+　&lt;span class=&quot;<span class=s>lspacing-minus0em30&quot;&gt;吾輩は猫である。名前はまだ無い。どこで生れたか&lt;ruby&gt;頓&lt;rt&gt;とん&lt;/rt&gt;&lt;/ruby&gt;と見當がつかぬ。&lt;/span&gt;</span>&lt;/p&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>行間指定クラス</h2>
+class=line-height-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+全7件 <span class="open">表示する</span>
+<div class="clist">
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-033.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;line-height</span>-normal&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>20</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;line-height</span>-1em&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>25</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;line-height</span>-1em50&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>30</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;line-height</span>-1em75&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>35</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;line-height</span>-2em&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>40</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;line-height</span>-2em50&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>45</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;line-height</span>-3em&quot;&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+<h2>行間アキ指定クラス</h2>
+class=m-left-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+全6件 <span class="open">表示する</span>
+<div class="clist">
+<table>
+<tr>
+<th class=f colspan=2>/package/item/xhtml/p-035.xhtml</th>
+</tr>
+<tr>
+<th>15</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;m-left</span>-0&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>21</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;m-left</span>-010per&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>27</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;m-left</span>-020per&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>33</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;m-left</span>-0em25&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>39</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;m-left</span>-0em50&quot;&gt; <br/> 
+
+</td>
+</tr>
+<tr>
+<th>45</th>
+<td class=s>
+
+&lt;div <span class=s>class=&quot;m-left</span>-1em&quot;&gt; <br/> 
+
+</td>
+</tr>
+
+
+</table>
+</div>
+
+
+<div class=footer>
+<hr>
+Generated by <a href="http://ck.densholab.jp/ec/">電書ラボチェッカー</a>
+</div>
+</body>

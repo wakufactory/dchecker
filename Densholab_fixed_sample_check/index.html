@@ -1,0 +1,410 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width">
+<title>電書ラボチェッカー</title>
+<script type="text/javascript">
+window.onload = function() {
+	var p = document.getElementsByClassName("help");
+	for(i=0;i<p.length;i++) {
+		p[i].onclick = function(ev) {
+			var next = this ;
+			while( next = next.nextSibling) {
+				if((next.tagName && next.tagName.toUpperCase())=="DIV") break ;
+			}
+			if(next.style.display!="block") next.style.display ="block" ;
+			else next.style.display = "none" ;
+		} ;
+	}
+	var p = document.getElementsByClassName("open");
+	for(i=0;i<p.length;i++) {
+		p[i].onclick = function(ev) {
+			var next = this ;
+			while( next = next.nextSibling) {
+				if((next.tagName && next.tagName.toUpperCase())=="DIV") break ;
+			}
+			if(next.style.display!="block") next.style.display ="block" ;
+			else next.style.display = "none" ;
+		} ;
+	}
+}
+</script>
+<style type="text/css">
+div.base {
+	margin:2em ;
+	width:60em ;
+	font-family:sans-serif;
+}
+table {
+	border:1px solid #444 ;
+	border-collapse: collapse ;
+}
+td,th {
+	border:1px solid #444 ;
+	padding:0.5em ;
+}
+th {
+	background-color:#eee ;
+}
+textarea.epubcheck {
+	font-size:1em ;
+	width:50em ;
+	height:10em ;
+}
+div.title {
+	width:100% ;
+	background-color:#444 ;
+	color:#eee ;
+	font-size:2em ;
+	padding:0.3em;
+}
+h1 {
+	font-size:2em ;
+	border-bottom:2px solid #44f ;
+}
+
+div.hantei {
+	font-size:1.3em ;
+	margin:0.5em ;
+}
+span.k {
+	font-size:2em ;
+	border:1px dotted #444 ;
+}
+.ok:before {
+	content:"◯ " ;
+	font-weight: bold ;
+	color: #2F2 ;
+}
+.ng:before {
+	content:"× " ;
+	font-weight: bold ;
+	color: #F22 ;	
+}
+.wn:before {
+	content:"△ " ;
+	font-weight: bold ;
+	color: #cc2 ;	
+}
+span.help,span.open {
+	margin-left:2em ;
+	padding: 0.1em 0.5em ;
+	background-color:green;
+	color:white ;
+	cursor:pointer ;
+}
+div.guide {
+	display:none ;
+	border:1px dotted black ;
+	padding:0.3em ;
+}
+div.gaiji {
+	float:left ;
+	margin:0.5em ;
+	border:1px solid #888 ;
+}
+div.gaiji img {
+	background-color:#ff4 ;
+}
+span.s {
+	background-color: #fcc ;
+}
+span.cap {
+	color: #88f ;
+}
+span.nohit {
+	font-weight: bold ;
+}
+div.footer {
+	margin-top:5em ;
+}
+span.k.cc_a {
+	background-color:#eef ;
+}
+span.k.cc_j {
+	background-color:#fee ;
+}
+div.glist,div.clist {
+	display:none ;
+}
+</style>
+</head>
+<body>
+<div class=base>
+<div class=title>電書ラボチェッカー</div>
+Version: 1.1.1<br/>
+
+<h2>ファイル名: Densholab_fixled_sample.epub</h2>
+チェック日時: 2014-10-08 15:38:25
+<h1>EPUBバリデータ</h1>
+<div class=hantei><span class=ok>EPUBバリデータ(epubcheck)の結果は問題ありません。</span></div>
+<textarea class=epubcheck readonly>Epubcheck Version 3.0.1
+
+Validating against EPUB version 3.0
+No errors or warnings detected.</textarea>
+<br/><span class=help>解説</span>
+<div class=guide>IDPF の提供している公式の epub 書式チェッカーである「epubcheck」でのチェック結果。EPUB フォルダ内のファイル 名と OPF に記述されているファイル名の整合性が取れているかどうか、ファイル内のリンク指定がきちんとなされている か、ID 名の重複がないかなど、様々な項目をチェックする。このチェックをクリアしていない EPUB は、商業コンテンツ として流通を許されない。「No errors or warnings ditected.」と表示されていれば OK(warning は error よりも程度の軽い
+「警告」程度の意味だが、いずれにせよ出ていたら NG)。<br/>
+ただし、文字など日本語に依存する問題や、画像のサイズなど各ストアの規定に依存する部分は epubcheck ではチェック できないので注意のこと。</div>
+ 
+<h1>メタ情報チェック</h1>
+<div class=hantei><span class=ok>メタ情報チェック結果は問題ありません。</span></div>
+
+<table class=h>
+<tr><th>書名情報</th>
+<td ><span class="ok">おにぎりレシピ101 FIXサンプル</span></td>
+</tr>
+<tr><th>著者情報</th>
+<td><span class="ok"></span>山田玲子, 水野菜生, </td>
+</tr>
+<tr><th>出版社情報</th>
+<td><span class="ok"></span>ポット出版</td>
+</tr>
+<tr><th>表紙情報</th>
+<td><span class="ok"></span>カバー画像あり 
+<a href="img/cover.jpg" target="_blank">画像</a>
+</td>
+</tr>
+<tr><th>電書協バージョン</th>
+<td><span class="ok"></span>1.1.2<span class=help>解説</span>
+<div class=guide>電書協、電書ラボ仕様準拠の場合、このタグが必要です。</div>
+</td>
+</tr>
+<tr><th>EPUB ID</th>
+<td><span class="ok"></span>ID種別: unique-id<br/> ID:urn:uuid:2A56DC1C-F456-4DE7-A6F8-38D98A15C887<span class=help>解説</span>
+<div class=guide>EPUB IDは、このファイルにつけるユニークなID。「電書ラボEPUB制作仕様」ではJPeコード（8 桁の数字+ 12 桁の英数字で構成される）を推奨する。</div>
+</td>
+</tr>
+
+</table>
+
+<h1>メタ情報詳細</h1>
+<table>
+<tr><td></td>
+<th>EPUB内メタ情報</th>
+<th>NDL書誌情報</th>
+</tr>
+
+<tr><th>書名</th><td>
+おにぎりレシピ101 FIXサンプル<br/>
+ 
+</td>
+</tr>
+
+
+<tr><th>著者</th><td>
+山田玲子<br/>
+水野菜生<br/>
+ 
+ 
+</td>
+</tr>
+
+<tr><th>出版社</th><td>ポット出版<br/>ポットシュッパン  
+ 
+</td>
+</tr>
+<tr><th>EPUB ID</th><td>urn:uuid:2A56DC1C-F456-4DE7-A6F8-38D98A15C887 <br/>
+<span class=cap>ID種別: </span>unique-id </td>
+</tr>
+
+<tr><th>EPUB Version</th><td>3.0</td>
+</tr>
+
+<tr><th>綴じ方向</th><td>ltr<span class=help>解説</span>
+<div class=guide>綴じ方向は、綴じ方向の種別でrtl（right to left）は右から左の右綴じで縦書、ltr（ left to right）は左から右の左綴じで横書き。
+綴じ方向は EPUB パッケージ全体で統一する必要があり、現在は混在をさけるのがよい。底本で逆丁索引などを採用していた場合には注意。</div>
+</td></tr>
+<tr><th>言語</th><td>ja<span class=help>解説</span>
+<div class=guide>言語は、コンテンツ内でメインで使用されている言語。日本語の場合は「ja」</div>
+</td></tr>
+<tr><th>更新日時</th><td>2014-10-07T19:47:35Z<span class=help>解説</span>
+<div class=guide>更新日時は、ほぼ制作完了日にしておくのが良い。記法は厳密に守る必要がある。</div>
+</td></tr>
+</table>
+
+
+<h1>固定EPUBチェック</h1>
+<div class=hantei><span class=wn>固定EPUBチェック結果に注意すべき項目があります。確認してください。</span></div>
+
+<h2>Viewportチェック</h2>
+<span class="ok"></span>Viweportは問題ありません<span class=help>解説</span>
+<div class=guide>各ページにviewportが設定されているかをチェック。</div>
+
+<h2>imgタグチェック</h2>
+<span class="ok"></span>imageタグは問題ありません<span class=help>解説</span>
+<div class=guide>各ページにimgタグが含まれているかをチェック。</div>
+
+<h2>画像サイズチェック</h2>
+<span class="wn"></span>画像サイズ不一致 <br/>../image/i-001.jpg<br/>
+<span class=help>解説</span>
+<div class=guide>画像サイズに不一致があったものを表示。RSによってはサイズが揃っていないと不具合になる場合があるので注意。</div>
+
+<h2>画像一覧</h2>
+<table>
+<tr>
+<th>画像ファイル</th><th>画像サイズ</th><th>viewportサイズ</th>
+</tr>
+<tr>
+<td>../image/cover.jpg</td>
+<td>1198 x 1701</td>
+<td>1198 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-001.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-002.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-003.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-004.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-005.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-006.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-007.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-008.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-009.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+<tr>
+<td>../image/i-010.jpg</td>
+<td>1213 x 1701</td>
+<td>1213 x 1701</td>
+</tr>
+</table>
+
+<h1>文字コードチェック</h1>
+<div class=hantei><span class=ok>問題ある文字はありません。</span></div>
+<table class=h>
+
+
+
+
+
+
+
+
+</table>
+
+
+<br clear=all>
+
+<h1>本文チェック</h1>
+
+<h2>縦中横候補(1-3文字の半角英数字)</h2>
+本文中の、１～３文字の半角英数字を、縦中横候補として表示します。<span class=help>解説</span><div class=guide>EPUB内の各XHTMLファイルで、本文縦書き時に縦中横で表示させなければならない可能性があるにもかかわらず、縦中横のタグが付加されていない１～３文字の半角英数字をチェックし、一覧で表示します。必要に応じてタグの追記を行ってください。<br />
+なお現在、全てのビューアで問題なく縦中横表示が可能なのは、数字は3桁、英文字は2文字までです。これを超えた場合は、たとえ縦中横のタグが付加されていたとしても、指定が反映されず横転表示されてしまう可能性があります。表記方法を変更する、外字画像化するなどの対策を検討してください。</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+<h2>数字+「ページ/頁」</h2>
+「○○ページ参照」などの記述を避けるため、「数字+ページ(頁)」の記述がされている部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内で「数字+ページ(頁)」の表記のある箇所を抽出し、一覧表示する。固定ページの概念がない EPUB では「○ ○ページ参照」といった表記は意味をなさなくなるので、これらの表記を修正する必要がある。一覧抽出することで修正 忘れを抑止することができる。<br />
+参考: 検索正規表現 = [0-9０-９一二三四五六七八九〇前次]+(&lt;[^&gt;]+&gt;)?(ページ|頁)</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+<h2>パラグラフ開始直後</h2>
+pタグの直後のパラグラフ開始文字を抽出<span class=help>解説</span><div class=guide>コンテンツ内のpタグの直後の文字を一覧表示する。段落頭字下げのチェックのための項目。</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+<h2>縦中横指定文字</h2>
+class=tcyで指定されたテキスト部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内の「&lt;span class=&quot;tcy&quot;&gt; 〜 &lt;/span&gt;」でマークアップされた縦書き時正立指定の文字を抽出し、一覧表示する。</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+<h2>正立指定文字</h2>
+class=uprightで指定されたテキスト部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内の「&lt;span class=&quot;upright&quot;&gt; 〜 &lt;/span&gt;」でマークアップされた縦書き時正立指定の文字を抽出し、一覧表 示する。文字によっては手元の環境で正立表示されていても、一部の RS で横転表示されてしまうものが存在するため、明示的に正立指定のタグを挿入しなければならないものが存在する。該当する文字に関しては、KADOKAWA-EPUB PORTAL<br />
+(http://kadokawa-epub.bookwalker.co.jp/)で資料が公開されている。<br />
+※ただし、現状タグのあるもののみを抽出しているので、本来タグ付加が必要でも付加されていない文字を抽出できない。</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+<h2>横倒し指定文字</h2>
+class=sidewaysで指定されたテキスト部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内の「&lt;span class=&quot;sideways&quot;&gt; 〜 &lt;/span&gt;」でマークアップされた縦書き時横倒し指定の文字を抽出し、一 覧表示する。文字によっては手元の環境で横転表示されていても、一部の RS で正立表示されてしまうものが存在するため、明示的に横転指定のタグを挿入しなければならないものが存在する。該当する文字に関しては、KADOKAWA-EPUB PORTAL(http://kadokawa-epub.bookwalker.co.jp/)で資料が公開されている。<br />
+※ただし、現状タグのあるもののみを抽出しているので、本来タグ付加が必要でも付加されていない文字を抽出できない。</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+<h2>画像外字使用</h2>
+class=gaiji指定の画像外字部分を表示します。<span class=help>解説</span><div class=guide>コンテンツ内で画像外字のタグが挿入されている箇所を抽出し、一覧表示する。個々の外字画像の字形に関しては「画像 外字一覧」を参照のこと。<br />
+XMDF や .book などから変換した場合などでは、もともと文字コードが Shift_JIS であったために、EPUB で使用される Unicode では画像外字を使用しなくても表現できる文字を外字画像化しているケースが存在する。<br />
+また、「正字」の表現を目的として画像外字を使用していたケースでは、JISX0213:2000 から JISX0213:2004 への変更に伴い、 多くの字形がデフォルトで表現できるようになっているので、本当に外字表現が必要なのかどうかを確認し、必要なけれ ば通常のテキストに置換すること。<br />
+画像外字はアクセシビリティを阻害する側面があり、また、背景色を黒に設定した際に外字が背景に溶け込んで視認できなくなる RS も存在するため、人名漢字などで本当に字形の保持が必要なケース以外では使用を控えた方が良い。</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+<h2>バックスラッシュ</h2>
+バックスラッシュが円記号として使われていないか確認<span class=help>解説</span><div class=guide>Shift-JISでは、0x5Cのコードが¥マークとして使われていたが、Unicodeではバックスラッシュになる。半角の¥マークを使う場合は、¥(U+A5)を使う必要がある。</div>
+<br/>
+<span class=nohit>該当部分はありません</span>
+
+
+<h1>電書協CSSチェック</h1>
+<span class=help>解説</span>
+<div class=guide>電書協準拠EPUBで使われている各種組版スタイルの利用箇所を抽出する。</div>
+<h2>イタリック指定文字</h2>
+class=italicで指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+<span class=nohit>該当部分はありません</span>
+<h2>文字位置指定クラス</h2>
+class=super/sub/valine-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+<span class=nohit>該当部分はありません</span>
+<h2>文字アキ指定クラス</h2>
+class=lspacing-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+<span class=nohit>該当部分はありません</span>
+<h2>行間指定クラス</h2>
+class=line-height-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+<span class=nohit>該当部分はありません</span>
+<h2>行間アキ指定クラス</h2>
+class=m-left-で指定されたテキスト部分を表示します。<br/>
+<!--
+<span class=help>解説</span><div class=guide></div>
+-->
+
+<span class=nohit>該当部分はありません</span>
+
+
+<div class=footer>
+<hr>
+Generated by <a href="http://ck.densholab.jp/ec/">電書ラボチェッカー</a>
+</div>
+</body>

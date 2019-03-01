@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width">
+<title>電書ラボチェッカー</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="wrapper">
+<div class="header_line"></div>
+<div id="main_img">
+<div id="header">
+	<div class="logo"><img src="image/logo.jpg" width="357" height="40" alt="logo" /></div>
+
+</div>
+<!--{def error}-->
+<h2>エラーが発生しました</h2>
+{rval error}
+<!--{/def}-->
+<!--{def zname}-->
+<h2>チェック完了しました</h2>
+ファイル名: 	{rval fname} <br/>
+<a href="{rval tmp}/" target="_blank">結果を見る</a><br/>
+<a href="{rval tmp}/{rval zname}">zipでタウンロード</a><br/>
+<br/>
+※チェック結果は、同じブラウザで別のファイルをチェックすると、上書きで更新されます。htmlとzipファイルは一定期間後には消去されますので、ダウンロードして保存しておいてください。<br/>
+<!--{/def}-->
+
+<br/>
+<a href="./">戻る</a>
+</div>
+</body>

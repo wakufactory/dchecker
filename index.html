@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>電書ラボチェッカー</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div id="wrapper">
+<div class="header_line"></div>
+<div id="header">
+	<div class="logo"><img src="image/logo.jpg" width="357" height="40" alt="logo" /></div>
+</div>
+
+<div id="content">
+
+<p>
+Version 1.1.2
+<form method=post action="check.php" enctype="multipart/form-data">
+EPUBファイル: <input type=file name=f1 title="EPUB"/><br/>
+底本ISBN: <input type=text name=isbn>(optional)<br/><br/>
+<input type=submit name=upload value="チェック開始" /> (チェック開始ボタンを押してから10~30秒かかります)<br/>
+</form>
+</p>
+<div class="text">
+<p>このチェッカーはEPUBファイルの状態を、一覧して見えるようにしたものです。<br/>
+主に、商業電子書籍を出版社が、kobo、Kindle、Apple、紀伊國屋などで販売するためのEPUBを制作した際の確認用のものとして開発しています。
+もちろん、出版社以外の制作者が、チェックするものとしても有効です。</p>
+
+<p>以下は、このチェッカーの基準のための参考資料です。
+<ul>
+<li>IDPFのepubcheck（現在はVersion 3.0.1）がかかります。
+<li>電書協「電書協ＥＰＵＢ 3 制作ガイドver.1.1.2」を参考にしています<br/>
+　<a href="http://www.ebpaj.jp/guide.html" target="_blank">http://www.ebpaj.jp/guide.html</a>
+<li>電書ラボEPUB制作仕様（現在は2014.07.10　β0.8）に準拠しています<br/>
+　<a href="https://docs.google.com/spreadsheets/d/199c4Pst4hSzV-1E2RdoJbnV0PdOS8Y86V1K_rQwFsLY/edit?usp=sharing" target="_blank">https://docs.google.com/spreadsheets/d/199c4Pst4hSzV-1E2RdoJbnV0PdOS8Y86V1K_rQwFsLY/edit?usp=sharing</a></p>
+</ul>
+</p>
+
+
+<h3>チェック結果サンプル</h3>
+<p>このチェック結果サンプルEPUBには意図的にエラーが含まれています。</p>
+<h4>リフローフォーマット</h4>
+<ul>
+<li>著者名が空白（メタ情報とバリデータがエラー）
+<li>一部外字画像の背景未透過
+<li>非推奨の漢字・記号の使用
+</ul>
+
+<p>
+<a href="DensholabChecker_error_check/" target="_blank">結果サンプルを見る</a><br/>
+<a href="DensholabChecker_error.epub">チェックサンプルEPUBダウンロード</a><br/>
+</p>
+<h4>固定フォーマット(画像)</h4>
+<ul>
+<li>表紙と本文の画像サイズが違う</li>
+</ul>
+<p>
+<a href="Densholab_fixed_sample_check/" target="_blank">結果サンプルを見る</a><br/>
+<a href="Densholab_fixed_sample.epub">チェックサンプルEPUBダウンロード</a><br/>
+</p>
+
+
+<h3>チェッカー解説(PDF)</h3>
+<p><a href="http://densholab.jp/wp-content/uploads/2014/10/c605d5184d2686f325652488264a972b.pdf">チェッカー解説20141010v11.pdf</a>（2014/10/10更新）
+</p>
+
+<hr>
+<h2>●電書ラボチェッカーをかける</h2>
+<ul>
+<li>「ファイルを選択」からお手元のマシンのEPUBファイルを選択して「チェック開始」を押してください<br/>
+「ファイルを選択」にEPUBファイルを重ねても選択できます<br/>
+アップロード終了後、そのままチェッカーがかかります<br/>
+チェッカーが終了すると「チェック完了しました」と表示します。<br/>
+「結果を見る」を押すと、そのままチェッカー結果がブラウザに表示されます<br/>
+「zipでダウンロード」を押すと、結果がhtmlファイルでzipファイルにしたものをあなたのマシンにダウンロードされます。解凍してお手持ちのブラウザでみてください</p>
+</ul>
+
+<h2>●チェッカー結果の説明</h2>
+<ul>
+<li>それぞれの項目に「解説」があります。「解説」を押すと、その項目の意味、結果表示の見方などの解説が表示されます
+</ul>
+
+<h2>●メタ情報確認のための底本ISBN入力</h2>
+
+<ul>
+<li>紙の底本がある場合、紙の底本のISBNを入力すると国立国会図書館の書誌情報を自動的に取得して、アップロードされたEPUBファイルのopfファイル（メタ情報）に記入されている項目と並べて表示します。メタ情報のチェックの一助として利用できます<br/>
+ISBNの書式は、10桁、13桁どちらでも構いません<br/>
+ISBN978-4-0000-0000-x<br/>
+978-4-0000-0000-x<br/>
+978400000000x（ハイフンなし）<br/>
+の書式が利用できます。
+</ul>
+
+
+<h2>■電書ラボチェッカーのお約束</h2>
+<ul>
+<li>チェックしたEPUBファイルは、電書ラボチェッカーを通したあと、その時点で削除しています
+<li>チェック結果は、保存して機能向上のために利用させていただきますが、個別のチェック結果を公開することはありません
+<li>保存するチェック結果の内容は、チェック結果で表示されるhtmlファイルの記載内容です
+<li>利用は商用・私用にかかわらず無料です。ご自由にお使いください。<br/></ul>
+
+<h2>■電書ラボチェッカーのエラーなどの連絡</h2>
+<ul>
+<li>
+電書ラボーお問い合せフォームから、エラーや、改善提案などをいただけると幸いです<br/>
+<a href="http://densholab.jp/page-61" target="_blank">http://densholab.jp/page-61</a><br/>
+<li>
+Facebookの電書ラボグループでも、ご意見受け付けています。<br/>
+<a href="https://www.facebook.com/groups/746905642027510/" targe="_blank">https://www.facebook.com/groups/746905642027510/</a></li>
+</ul>
+
+<h2>■開発</h2>
+この電書ラボチェッカーは、電書ラボが企画して、株式会社ラング・大江和久が開発したものです。<br/>
+電書ラボ　<a href="http://densholab.jp/" target="_blank">http://densholab.jp/</a><br/>
+株式会社ラング　<a href="http://www.lang.co.jp/" target="_blank">http://www.lang.co.jp/</a><br/>
+
+<h2>更新履歴</h2>
+<ul>
+<li>2014/12/2 Version1.1.2  BOM検出のファイル名が正しくなかったバグを修正</li>
+<li>2014/10/1 Version1.1.1  メタ情報表示部分レイアウトを一部変更。固定EPUBチェック結果を一部修正。</li>
+<li>2014/9/25 Version1.1.0  文字チェックでAdobeJapan1-6文字の表示。本文チェックでリストを折りたたむように修正。</li>
+<li>2014/9/12 Version1.0.1  細かなバグフィックス、文言の修正</li>
+</ul>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+#wrapper {
+	height: auto;
+	width: 800px;
+	margin: 0px auto;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #ffffff
+}
+body {
+background-color: #ffffff
+
+}
+#header {
+	height: 50px;
+	width: 730px;
+	margin-right: 35px;
+	margin-left: 35px;
+}	
+#main_img {
+	width: 730px;
+	margin-right: 35px;
+	margin-left: 35px;
+	clear: both;
+}
+.logo {
+	height: 40px;
+	width: 357px;
+	float: left;
+}
+.title {
+	margin-top: 15px;
+}
+.menu {
+	float: right;
+	height: 20px;
+	width: 90px;
+	margin-top: 20px;
+}
+#content {
+	height: auto;
+	width: 730px;
+	margin-left: 35px;
+	margin-right: 35px;
+}
+.text {
+	height: auto;
+	width: 730px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 14px;
+	color: #333;
+	font-family: "ＭＳ ゴシック", "MS Gothic", monospace;
+	line-height: 24px;
+}
+.copy {
+	border-top-width: 1px;
+	border-top-style: dashed;
+	border-top-color: #333; 
+	margin-top: 30px;
+	text-align: center;
+	font-size: 9px;
+	font-family: Verdana, Geneva, sans-serif;
+	padding-top: 10px;
+}
