@@ -1,0 +1,42 @@
+.admtop h2 { 
+	font-size: 20px ;
+	color: #ffffff; 
+	background-color: #404040;
+	padding: 2px 10px ; 
+	border-bottom: 3px solid #f04040 ;}
+
+.admtop h3{ 
+	font-size: 15px ;
+	color: #FFFFFF; 
+	background-color: #404040;
+	padding: 5px 10px ; 
+	border-bottom: 3px solid #f04040 ;}
+
+.admbody h2 {
+	font-size: 15px ;
+}
+.admbody h1 {
+	font-size: 20px ;
+}
+.admtop a:link { color: #e0e0e0; } 
+.admtop a:visited { color: #e0e0e0; } 
+.admtop a:active { color: #e0e0e0; } 
+.admtop { margin: 2px 4px ; 
+	} 
+
+.admfoot h2 { 
+	border-bottom: 3px solid #f04040 ;}
+
+.admbody { padding: 1px 10px; } 
+
+td.num { text-align: right ; }
+td.item { font-weight: bold; }
+
+.list th { background-color: #C0C0C0; }
+.list td { padding: 2px 2px ; } 
+.form td { border-bottom: 1px solid #C0A0A0;
+	padding: 2px 5 ; }
+
+.comment { font-size: 10px ; }
+.error { color: #F02020; } 
+.message { font-weight: bold; }
